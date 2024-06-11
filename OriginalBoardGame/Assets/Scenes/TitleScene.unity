@@ -436,6 +436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571949d0500341d42876277a010bd171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNameTitle: TitleScene
+  sceneNameAS: AitemSelectScene
+  sceneNameG: GameScene
+  scenenameC: GameClear
+  scenenameO: GameOver
   currentState: 0
 --- !u!1 &1416669914
 GameObject:

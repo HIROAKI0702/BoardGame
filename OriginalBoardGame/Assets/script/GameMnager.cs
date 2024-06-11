@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameMnager : MonoBehaviour
 {
+    public string sceneNameTitle;
+    public string sceneNameAS;
+    public string sceneNameG;
+    public string scenenameC;
+    public string scenenameO;
+
     public enum GameState
     {
         TITLE,
@@ -11,7 +17,7 @@ public class GameMnager : MonoBehaviour
         GAME,
         OPTION,
         CLEAR,
-        END
+        GAMEOVER
     }
 
     public GameState currentState = GameState.TITLE;
@@ -53,7 +59,7 @@ public class GameMnager : MonoBehaviour
             case GameState.CLEAR:
                 GameClear();
                 break;
-            case GameState.END:
+            case GameState.GAMEOVER:
                 GameOver();
                 break;
         }
@@ -61,31 +67,36 @@ public class GameMnager : MonoBehaviour
 
     void GameTitle()
     {
-
+        Debug.Log("title");
     }
 
     void GameHome()
     {
         gState = "home";
+        Debug.Log("home");
     }
 
     void GamePlayng()
     {
         gState = "playng";
+        Debug.Log("playng");
     }
 
     void GamePose()
     {
         gState = "pose";
+        Debug.Log("pose");
     }
     
     void GameClear()
     {
         gState = "clesr";
+        Debug.Log("clear");
     }
 
     void GameOver()
     {
         gState = "end";
+        Debug.Log("gameover");
     }
 }
