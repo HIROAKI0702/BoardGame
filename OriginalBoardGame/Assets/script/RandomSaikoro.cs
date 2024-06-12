@@ -7,29 +7,18 @@ public class RandomSaikoro : MonoBehaviour
     public GameObject Stage1;
     public GameObject Stage2;
 
-    public GameObject NSword;
-    //public GameObject APSword;
-    //public GameObject Nshield;
-    //public GameObject APshield;
-    //public GameObject NBow;
-    //public GameObject APBow;
-    //public GameObject NArmer;
-    //public GameObject APArmer;
-    //public GameObject NCounter;
-    //public GameObject APCounter;
-    //public GameObject NSteal;
-    //public GameObject APSteal;
+    public List<GameObject> saikoroObject;
 
     public Vector3 minPosition;
     public Vector3 maxPosition;
 
-    // 生成するオブジェクトの数
-    public int numberOfObjects = 10;
+    //生成するオブジェクトの数
+    public int spawnObject = 5;
 
-    // オブジェクト間の最小距離
+    //オブジェクト間の最小距離
     public float minDistanceBetweenObjects = 1.0f;
 
-    // 生成済みの位置を保持するリスト
+    //生成済みのオブジェクトの位置を保存するリスト
     private List<Vector3> spawnedPositions = new List<Vector3>();
 
     void Start()
@@ -39,24 +28,30 @@ public class RandomSaikoro : MonoBehaviour
 
     void SpawnObjects()
     {
-        for (int i = 0; i < numberOfObjects; i++)
+        //生成されたオブジェクトの数を追跡する変数
+        int objectsSpawned = 0;
+
+        //生成されたオブジェクトの数が指定された数に達するまでループ
+        while (objectsSpawned < spawnObject) 
         {
-            Vector3 newPosition;
-            bool validPosition = false;
+            Vector3 newPosition = GetRandomPosition(minPosition, maxPosition);
+            bool validPosition = IsPositionValid(newPosition, minDistanceBetweenObjects);
 
-            do
+            if (validPosition)
             {
-                newPosition = GetRandomPositionInRectangle(minPosition, maxPosition);
-                validPosition = IsPositionValid(newPosition, minDistanceBetweenObjects);
-            } while (!validPosition);
+                spawnedPositions.Add(newPosition);
 
-            spawnedPositions.Add(newPosition);
-            Instantiate(NSword, newPosition, Quaternion.identity);
+                //ランダムなプレハブを選択して生成
+                GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+                Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+
+                objectsSpawned++; //生成されたオブジェクトの数を増やす
+            }
         }
     }
 
-    // 矩形範囲内のランダムな位置を計算するメソッド
-    Vector3 GetRandomPositionInRectangle(Vector3 min, Vector3 max)
+    //範囲内のランダムな位置を計算
+    Vector3 GetRandomPosition(Vector3 min, Vector3 max)
     {
         return new Vector3(
             Random.Range(min.x, max.x),
@@ -65,7 +60,7 @@ public class RandomSaikoro : MonoBehaviour
         );
     }
 
-    // 生成された位置が他のオブジェクトの位置と重ならないかを確認するメソッド
+    // 生成された位置が他のオブジェクトの位置と重ならないかを確認
     bool IsPositionValid(Vector3 position, float minDistance)
     {
         foreach (Vector3 spawnedPosition in spawnedPositions)
