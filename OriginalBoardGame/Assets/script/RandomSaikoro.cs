@@ -23,11 +23,6 @@ public class RandomSaikoro : MonoBehaviour
 
     void Start()
     {
-        
-    }
-
-    public void OnClick()
-    {
         SpawnObjects();
     }
 
