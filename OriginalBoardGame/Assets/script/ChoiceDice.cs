@@ -34,7 +34,7 @@ public class ChoiceDice : MonoBehaviour
     }
 
     void DiceClick()
-    {
+    {  
         NormalSword = null;
         NormalShield = null;
         NormalBow = null;
@@ -66,7 +66,5 @@ public class ChoiceDice : MonoBehaviour
             APSteal = hit2d.transform.gameObject;
             APCounter = hit2d.transform.gameObject;
         }
-
-        Debug.Log(NormalSword + "Œ•");
     }
 }
