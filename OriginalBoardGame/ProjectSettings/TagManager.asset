@@ -5,6 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - NormalSword
+  - NormalShield
+  - NormalBow
+  - NormalArmer
+  - NormalSteal
+  - NormalCounter
+  - APSword
+  - APShield
+  - APBow
+  - APArmer
+  - APSteal
+  - APCounter
+  - Undefined
   layers:
   - Default
   - TransparentFX
