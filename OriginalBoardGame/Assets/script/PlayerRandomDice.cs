@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSaikoro : MonoBehaviour
+public class PlayerRandomDice : MonoBehaviour
 {
     public GameObject Stage1;
     public GameObject Stage2;
 
+    //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
+    //さいころをスポーンさせるポジションを保存するリスト
+    public List<Vector3> DiceSpawnPosition;
 
     public Vector3 minPosition;
     public Vector3 maxPosition;
@@ -36,24 +39,25 @@ public class RandomSaikoro : MonoBehaviour
         //重なった時にずらす処理が必要
 
         //生成されたオブジェクトの数を追跡する変数
-        int objectsSpawned = 0;
+        int objectSpawned = 0;
+
+        //int objectsToSpawn = Mathf.Min(spawnedPositions.Count, saikoroObject.Count); // 生成するオブジェクトの数を決定
 
         //生成されたオブジェクトの数が指定された数に達するまでループ
-        while (objectsSpawned < spawnObject)
+        while (objectSpawned < spawnObject)
         {
+            //Vector型のnewPositionにランダムのポジションを取得する関数を呼ぶ
             Vector3 newPosition = GetRandomPosition(minPosition, maxPosition);
-            bool validPosition = IsPositionValid(newPosition, minDistanceBetweenObjects);
 
-           // if (validPosition)
-           // {
-                spawnedPositions.Add(newPosition);
+            spawnedPositions.Add(newPosition);
 
-                //ランダムなプレハブを選択して生成
-                GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-                Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+           
+            //ランダムなプレハブを選択して生成
+            GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+            Instantiate(prefabSpawn, newPosition, Quaternion.identity);
 
-                objectsSpawned++; //生成されたオブジェクトの数を増やす
-           // }
+            objectSpawned++; //生成されたオブジェクトの数を増やす)
+                    
         }
     }
 
@@ -65,19 +69,6 @@ public class RandomSaikoro : MonoBehaviour
             Random.Range(min.y, max.y),
             Random.Range(min.z, max.z)
         );
-    }
-
-    // 生成された位置が他のオブジェクトの位置と重ならないかを確認
-    bool IsPositionValid(Vector3 position, float minDistance)
-    {
-        foreach (Vector3 spawnedPosition in spawnedPositions)
-        {
-            if (Vector3.Distance(position, spawnedPosition) < minDistance)
-            {
-                return false;
-            }
-        }
-        return true;
     }
 }
 
