@@ -23,22 +23,29 @@ public class RandomSaikoro : MonoBehaviour
 
     void Start()
     {
+        //SpawnObjects();
+    }
+
+    public void OnClick()
+    {
         SpawnObjects();
     }
 
     void SpawnObjects()
     {
+        //重なった時にずらす処理が必要
+
         //生成されたオブジェクトの数を追跡する変数
         int objectsSpawned = 0;
 
         //生成されたオブジェクトの数が指定された数に達するまでループ
-        while (objectsSpawned < spawnObject) 
+        while (objectsSpawned < spawnObject)
         {
             Vector3 newPosition = GetRandomPosition(minPosition, maxPosition);
             bool validPosition = IsPositionValid(newPosition, minDistanceBetweenObjects);
 
-            if (validPosition)
-            {
+           // if (validPosition)
+           // {
                 spawnedPositions.Add(newPosition);
 
                 //ランダムなプレハブを選択して生成
@@ -46,7 +53,7 @@ public class RandomSaikoro : MonoBehaviour
                 Instantiate(prefabSpawn, newPosition, Quaternion.identity);
 
                 objectsSpawned++; //生成されたオブジェクトの数を増やす
-            }
+           // }
         }
     }
 
