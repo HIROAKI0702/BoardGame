@@ -65,6 +65,8 @@ public class ChoiceDice : MonoBehaviour
             APArmer = hit2d.transform.gameObject;
             APSteal = hit2d.transform.gameObject;
             APCounter = hit2d.transform.gameObject;
+
+            Debug.Log("dice");
         }
     }
 }
