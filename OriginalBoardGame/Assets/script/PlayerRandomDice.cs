@@ -7,6 +7,8 @@ public class PlayerRandomDice : MonoBehaviour
     public GameObject Stage1;
     public GameObject Stage2;
 
+    public GameObject DiceButton;
+
     //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
     //生成する位置のリスト
@@ -24,6 +26,8 @@ public class PlayerRandomDice : MonoBehaviour
     //生成済みのオブジェクトの位置を保存するリスト
     private List<Vector3> spawnedPositions = new List<Vector3>();
 
+    bool OneButtonFlag = false;
+
     void Start()
     {
     }
@@ -38,9 +42,7 @@ public class PlayerRandomDice : MonoBehaviour
         //生成するオブジェクトの数を決定
         int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
-        ////生成する位置のリストをシャッフルしてランダムに選択する
-        //List<Vector3> shuffledPositions = new List<Vector3>(spawnPositions);
-        //Shuffle(shuffledPositions);
+        Debug.Log(saikoroObject.Count);
 
         //生成されたオブジェクトの数が指定された数に達するまでループ
         for (int i = 0; i < objectsToSpawn; i++)
@@ -54,20 +56,15 @@ public class PlayerRandomDice : MonoBehaviour
             //ランダムなプレハブを選択して生成
             GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
             Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+
+            Debug.Log(saikoroObject.Count);
+            OneButtonFlag = true;
+        }
+
+        if(OneButtonFlag == true)
+        {
+            DiceButton.SetActive(false);
         }
     }
-
-    //// リストをシャッフルするメソッド
-    //void Shuffle<T>(List<T> list)
-    //{
-    //    int n = list.Count;
-    //    for (int i = 0; i < n; i++)
-    //    {
-    //        int r = Random.Range(i, n);
-    //        T tmp = list[i];
-    //        list[i] = list[r];
-    //        list[r] = tmp;
-    //    }
-    //}
 }
 

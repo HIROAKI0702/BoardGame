@@ -37,10 +37,6 @@ public class EnemyRandomDice : MonoBehaviour
         //生成するオブジェクトの数を決定
         int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
-        ////生成する位置のリストをシャッフルしてランダムに選択する
-        //List<Vector3> shuffledPositions = new List<Vector3>(spawnPositions);
-        //Shuffle(shuffledPositions);
-
         //生成されたオブジェクトの数が指定された数に達するまでループ
         for (int i = 0; i < objectsToSpawn; i++)
         {
@@ -55,18 +51,5 @@ public class EnemyRandomDice : MonoBehaviour
             Instantiate(prefabSpawn, newPosition, Quaternion.identity);
         }       
     }
-
-    //// リストをシャッフルするメソッド
-    //void Shuffle<T>(List<T> list)
-    //{
-    //    int n = list.Count;
-    //    for (int i = 0; i < n; i++)
-    //    {
-    //        int r = Random.Range(i, n);
-    //        T tmp = list[i];
-    //        list[i] = list[r];
-    //        list[r] = tmp;
-    //    }
-    //}
 }
 
