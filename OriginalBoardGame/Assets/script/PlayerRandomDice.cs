@@ -39,31 +39,34 @@ public class PlayerRandomDice : MonoBehaviour
 
     void SpawnObjects()
     {
-        //生成するオブジェクトの数を決定
-        int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
-
-        Debug.Log(saikoroObject.Count);
-
-        //生成されたオブジェクトの数が指定された数に達するまでループ
-        for (int i = 0; i < objectsToSpawn; i++)
+        if (Turnprogram.MyTurnFlag == true)
         {
-            //指定された位置を取得
-            Vector3 newPosition = spawnPositions[i];
-
-            //リストに新しい位置を保存
-            spawnedPositions.Add(newPosition);
-
-            //ランダムなプレハブを選択して生成
-            GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+            //生成するオブジェクトの数を決定
+            int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
             Debug.Log(saikoroObject.Count);
-            OneButtonFlag = true;
-        }
 
-        if(OneButtonFlag == true)
-        {
-            DiceButton.SetActive(false);
+            //生成されたオブジェクトの数が指定された数に達するまでループ
+            for (int i = 0; i < objectsToSpawn; i++)
+            {
+                //指定された位置を取得
+                Vector3 newPosition = spawnPositions[i];
+
+                //リストに新しい位置を保存
+                spawnedPositions.Add(newPosition);
+
+                //ランダムなプレハブを選択して生成
+                GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+                Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+
+                Debug.Log(saikoroObject.Count);
+                OneButtonFlag = true;
+            }
+
+            if (OneButtonFlag == true)
+            {
+                DiceButton.SetActive(false);
+            }
         }
     }
 }

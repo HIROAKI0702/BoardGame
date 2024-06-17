@@ -33,23 +33,26 @@ public class EnemyRandomDice : MonoBehaviour
     }
 
     void SpawnObjects()
-    {     
-        //生成するオブジェクトの数を決定
-        int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
-
-        //生成されたオブジェクトの数が指定された数に達するまでループ
-        for (int i = 0; i < objectsToSpawn; i++)
+    {
+        if (Turnprogram.MyTurnFlag == false)
         {
-            //指定された位置を取得
-            Vector3 newPosition = spawnPositions[i];
+            //生成するオブジェクトの数を決定
+            int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
-            //リストに新しい位置を保存
-            spawnedPositions.Add(newPosition);
+            //生成されたオブジェクトの数が指定された数に達するまでループ
+            for (int i = 0; i < objectsToSpawn; i++)
+            {
+                //指定された位置を取得
+                Vector3 newPosition = spawnPositions[i];
 
-            //ランダムなプレハブを選択して生成
-            GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            Instantiate(prefabSpawn, newPosition, Quaternion.identity);
-        }       
+                //リストに新しい位置を保存
+                spawnedPositions.Add(newPosition);
+
+                //ランダムなプレハブを選択して生成
+                GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+                Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+            }
+        }
     }
 }
 
