@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRandomDice : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerRandomDice : MonoBehaviour
     public GameObject Stage2;
 
     public GameObject DiceButton;
+
+    public Sprite newSprite;
 
     //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
@@ -25,26 +28,37 @@ public class PlayerRandomDice : MonoBehaviour
 
     //生成済みのオブジェクトの位置を保存するリスト
     private List<Vector3> spawnedPositions = new List<Vector3>();
+    //前回生成されたオブジェクトを保存するリスト
+    private List<GameObject> LastTimeDice = new List<GameObject>();
 
-    bool OneButtonFlag = false;
+    private Image image;
+
+    Button btn;
+
+    int rerollCount = 0;
 
     void Start()
     {
+        btn = GetComponent<Button>();
+        image = GetComponent<Image>();
     }
 
     public void OnClick()
     {
         SpawnObjects();
+        //一度しかボタンを押せないようにする
+        btn.interactable = false;
     }
 
     void SpawnObjects()
     {
         if (Turnprogram.MyTurnFlag == true)
         {
+            RemoveDice();
+            rerollCount++;
+
             //生成するオブジェクトの数を決定
             int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
-
-            Debug.Log(saikoroObject.Count);
 
             //生成されたオブジェクトの数が指定された数に達するまでループ
             for (int i = 0; i < objectsToSpawn; i++)
@@ -57,17 +71,41 @@ public class PlayerRandomDice : MonoBehaviour
 
                 //ランダムなプレハブを選択して生成
                 GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-                Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+                GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
 
-                Debug.Log(saikoroObject.Count);
-                OneButtonFlag = true;
-            }
+                LastTimeDice.Add(Dice);
 
-            if (OneButtonFlag == true)
-            {
-                DiceButton.SetActive(false);
+                
+
+                StartCoroutine(ReRoll());
             }
         }
+    }
+
+    void RemoveDice()
+    {
+        foreach(GameObject obj in LastTimeDice)
+        {
+            Destroy(obj);
+        }
+        LastTimeDice.Clear();
+    }
+
+    IEnumerator ReRoll()
+    {
+        yield return new WaitForSeconds(2f);
+
+        image.sprite = newSprite;
+        btn.interactable = true;
+        Debug.Log(rerollCount);
+
+        if (rerollCount == 3)
+        {
+            btn.interactable = false;
+            Debug.Log(rerollCount);
+        }
+      
+        yield break;
     }
 }
 

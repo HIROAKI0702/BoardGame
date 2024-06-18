@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoiceDice : MonoBehaviour
 {
@@ -17,16 +18,16 @@ public class ChoiceDice : MonoBehaviour
     public GameObject APSteal;
     public GameObject APCounter;
 
-    public Vector3 newScale;
+    public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
 
     private Vector3[] position = new Vector3[]
-   {
+    {
         new Vector3(-3.2f, 0.23f, 10),
         new Vector3(-1.58f, 0.23f, 10),
         new Vector3(0f, 0.23f, 10),
         new Vector3(1.58f, 0.23f, 10),
         new Vector3(3.2f, 0.23f, 10)
-   };
+    };
 
     int count = 0;
 
@@ -63,6 +64,7 @@ public class ChoiceDice : MonoBehaviour
                 BigDice.transform.localScale = newScale;
                 count++;
                 //再度クリックできないようにコライダーを消しておく
+                BigDice.GetComponent<BoxCollider2D>().enabled = false;
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
             }
         }      
