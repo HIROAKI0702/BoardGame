@@ -43,6 +43,11 @@ public class PlayerRandomDice : MonoBehaviour
         image = GetComponent<Image>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void OnClick()
     {
         SpawnObjects();
@@ -74,8 +79,6 @@ public class PlayerRandomDice : MonoBehaviour
                 GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
 
                 LastTimeDice.Add(Dice);
-
-                
 
                 StartCoroutine(ReRoll());
             }

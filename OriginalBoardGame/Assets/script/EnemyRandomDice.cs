@@ -26,16 +26,10 @@ public class EnemyRandomDice : MonoBehaviour
 
     void Start()
     {
-    }
-    public void OnClick()
-    {
-        SpawnObjects();
-    }
-
-    void SpawnObjects()
-    {
+        Debug.Log(Turnprogram.MyTurnFlag);
         if (Turnprogram.MyTurnFlag == false)
         {
+            Debug.Log(Turnprogram.MyTurnFlag);
             //生成するオブジェクトの数を決定
             int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 

@@ -66,6 +66,13 @@ public class ChoiceDice : MonoBehaviour
                 //再度クリックできないようにコライダーを消しておく
                 BigDice.GetComponent<BoxCollider2D>().enabled = false;
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
+
+                if(count == 5)
+                {
+                    //サイコロを５つ選んだら敵のターンになる
+                    Turnprogram.MyTurnFlag = false;
+                    Debug.Log(Turnprogram.MyTurnFlag);
+                }
             }
         }      
     }

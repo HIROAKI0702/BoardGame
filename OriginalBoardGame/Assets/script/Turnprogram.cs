@@ -9,11 +9,16 @@ public class Turnprogram : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyTurn();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    void EnemyTurn()
     {
         
     }
