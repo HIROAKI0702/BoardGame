@@ -31,6 +31,8 @@ public class ChoiceDice : MonoBehaviour
 
     int count = 0;
 
+    Button btn;
+
     // Start is called before the first frame update
     void Start()
     {
