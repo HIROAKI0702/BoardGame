@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMnager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public string sceneNameTitle;
     public string sceneNameAS;
     public string sceneNameG;
     public string scenenameC;
     public string scenenameO;
+
+    //自分のターンか敵のターンかを判断
+    public bool MyTurnFlag = true;
+
+    public PlayerRandomDice playerrandomdice;
+    public EnemyRandomDice enemyrandomdice;
+    public ChoiceDice choicedice;
 
     public enum GameState
     {
@@ -27,16 +34,29 @@ public class GameMnager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Input.GetButton("Fire1"))
-        {
-            dispatch(GameState.TITLE);
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButton("Fire1"))
+        {
+            dispatch(GameState.TITLE);
+        }
+
+        if (choicedice.count == 5)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                //サイコロを５つ選んだら敵のターンになる
+                MyTurnFlag = false;
+                if (!MyTurnFlag)
+                {
+                    enemyrandomdice.EnemyTurn();
+                }
+            }
+        }
     }
 
     public void dispatch(GameState state)
@@ -80,6 +100,12 @@ public class GameMnager : MonoBehaviour
     {
         gState = "playng";
         Debug.Log("playng");
+
+        if(MyTurnFlag)
+        {
+            playerrandomdice.SpawnObjects();
+            Debug.Log(MyTurnFlag);
+        }      
     }
 
     void GamePose()

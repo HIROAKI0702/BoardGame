@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a38259708ff7e45ac6b6a2e09f9353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanager: {fileID: 519420034}
   NormalSword: {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
   NormalShield: {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
   NormalBow: {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
@@ -533,6 +534,7 @@ MonoBehaviour:
   APSteal: {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
   APCounter: {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
   newScale: {x: 0.5, y: 0.5, z: 0.5}
+  count: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +547,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -619,18 +620,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6214d81c0d56d5b4e9510c1766c8a90c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +637,10 @@ MonoBehaviour:
   sceneNameG: GameScene
   scenenameC: GameClear
   scenenameO: GameOver
+  MyTurnFlag: 1
+  playerrandomdice: {fileID: 1979970547}
+  enemyrandomdice: {fileID: 1979970548}
+  choicedice: {fileID: 493391184}
   currentState: 2
 --- !u!1 &591035366
 GameObject:
@@ -1321,6 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d990bf201a6932d46b2de0c26c1cd50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanagers: {fileID: 519420034}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   DiceButton: {fileID: 1979970542}
@@ -1360,6 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874a71277e894624dae1d237ffaeae97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanager: {fileID: 519420034}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   saikoroObject:

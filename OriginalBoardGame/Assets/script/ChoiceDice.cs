@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ChoiceDice : MonoBehaviour
 {
+    public GameManager gamemanager;
+
     public GameObject NormalSword;
     public GameObject NormalShield;
     public GameObject NormalBow;
@@ -29,7 +31,7 @@ public class ChoiceDice : MonoBehaviour
         new Vector3(3.2f, 0.23f, 10)
     };
 
-    int count = 0;
+    public int count = 0;
 
     Button btn;
 
@@ -67,14 +69,7 @@ public class ChoiceDice : MonoBehaviour
                 count++;
                 //再度クリックできないようにコライダーを消しておく
                 BigDice.GetComponent<BoxCollider2D>().enabled = false;
-                Dice.GetComponent<BoxCollider2D>().enabled = false;
-
-                if(count == 5)
-                {
-                    //サイコロを５つ選んだら敵のターンになる
-                    Turnprogram.MyTurnFlag = false;
-                    Debug.Log(Turnprogram.MyTurnFlag);
-                }
+                Dice.GetComponent<BoxCollider2D>().enabled = false;              
             }
         }      
     }

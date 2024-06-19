@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerRandomDice : MonoBehaviour
 {
+    public GameManager gamemanagers;
+
     public GameObject Stage1;
     public GameObject Stage2;
 
@@ -52,36 +54,33 @@ public class PlayerRandomDice : MonoBehaviour
     {
         SpawnObjects();
         //一度しかボタンを押せないようにする
-        btn.interactable = false;
+        btn.interactable = false;      
     }
 
-    void SpawnObjects()
+    public void SpawnObjects()
     {
-        if (Turnprogram.MyTurnFlag == true)
+        RemoveDice();
+        rerollCount++;
+
+        //生成するオブジェクトの数を決定
+        int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
+
+        //生成されたオブジェクトの数が指定された数に達するまでループ
+        for (int i = 0; i < objectsToSpawn; i++)
         {
-            RemoveDice();
-            rerollCount++;
+            //指定された位置を取得
+            Vector3 newPosition = spawnPositions[i];
 
-            //生成するオブジェクトの数を決定
-            int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
+            //リストに新しい位置を保存
+            spawnedPositions.Add(newPosition);
 
-            //生成されたオブジェクトの数が指定された数に達するまでループ
-            for (int i = 0; i < objectsToSpawn; i++)
-            {
-                //指定された位置を取得
-                Vector3 newPosition = spawnPositions[i];
+            //ランダムなプレハブを選択して生成
+            GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+            GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
 
-                //リストに新しい位置を保存
-                spawnedPositions.Add(newPosition);
+            LastTimeDice.Add(Dice);
 
-                //ランダムなプレハブを選択して生成
-                GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-                GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
-
-                LastTimeDice.Add(Dice);
-
-                StartCoroutine(ReRoll());
-            }
+            StartCoroutine(ReRoll());
         }
     }
 
