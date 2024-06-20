@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public PlayerRandomDice playerrandomdice;
     public EnemyRandomDice enemyrandomdice;
     public ChoiceDice choicedice;
+    public EnemyChoiceDice enemychoicedice;
 
     public enum GameState
     {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
                 MyTurnFlag = false;
                 if (!MyTurnFlag)
                 {
-                    enemyrandomdice.EnemyTurn();
+                    StartCoroutine(TurnDeley());
                 }
             }
         }
@@ -124,5 +125,25 @@ public class GameManager : MonoBehaviour
     {
         gState = "end";
         Debug.Log("gameover");
+    }
+
+    IEnumerator TurnDeley()
+    {
+        yield return new WaitForSeconds(5f);
+
+        enemyrandomdice.EnemyTurn();
+
+        StartCoroutine(EnemyDice());
+
+        yield break;
+    }
+
+    IEnumerator EnemyDice()
+    {
+        yield return new WaitForSeconds(2f);
+
+        enemychoicedice.EnemyDiceClick();
+
+        yield break;
     }
 }

@@ -33,11 +33,6 @@ public class EnemyRandomDice : MonoBehaviour
 
     private void Update()
     {
-        //if (!turnprogram.MyTurnFlag)
-        //{
-        //    StartCoroutine(EnemyTurn());
-        //    turnprogram.MyTurnFlag = true;
-        //}
     }
 
     public void EnemyTurn()
@@ -59,29 +54,5 @@ public class EnemyRandomDice : MonoBehaviour
             Instantiate(prefabSpawn, newPosition, Quaternion.identity);
         }
     }
-
-    //public IEnumerator EnemyTurn()
-    //{
-    //    yield return new WaitForSeconds(5f);
-
-    //    //生成するオブジェクトの数を決定
-    //    int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
-
-    //    //生成されたオブジェクトの数が指定された数に達するまでループ
-    //    for (int i = 0; i < objectsToSpawn; i++)
-    //    {
-    //        //指定された位置を取得
-    //        Vector3 newPosition = spawnPositions[i];
-
-    //        //リストに新しい位置を保存
-    //        spawnedPositions.Add(newPosition);
-
-    //        //ランダムなプレハブを選択して生成
-    //        GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-    //        Instantiate(prefabSpawn, newPosition, Quaternion.identity);
-    //    }
-
-    //    yield break;
-    //}
 }
 

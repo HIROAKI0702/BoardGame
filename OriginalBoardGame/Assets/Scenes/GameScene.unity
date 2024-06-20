@@ -486,6 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 493391183}
   - component: {fileID: 493391184}
+  - component: {fileID: 493391185}
   m_Layer: 0
   m_Name: DiceClickObject
   m_TagString: Untagged
@@ -518,6 +519,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74a38259708ff7e45ac6b6a2e09f9353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamemanager: {fileID: 519420034}
+  NormalSword: {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
+  NormalShield: {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
+  NormalBow: {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
+  NormalArmer: {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
+  NormalSteal: {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
+  NormalCounter: {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
+  APSword: {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
+  APShield: {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
+  APBow: {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
+  APArmer: {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
+  APSteal: {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
+  APCounter: {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
+  newScale: {x: 0.5, y: 0.5, z: 0.5}
+  count: 0
+--- !u!114 &493391185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493391181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da46e33e0ff51442ac42e8bcde8e05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
@@ -641,6 +669,7 @@ MonoBehaviour:
   playerrandomdice: {fileID: 1979970547}
   enemyrandomdice: {fileID: 1979970548}
   choicedice: {fileID: 493391184}
+  enemychoicedice: {fileID: 493391185}
   currentState: 2
 --- !u!1 &591035366
 GameObject:
