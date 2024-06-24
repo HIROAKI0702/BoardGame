@@ -535,6 +535,7 @@ MonoBehaviour:
   APSteal: {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
   APCounter: {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
   newScale: {x: 0.5, y: 0.5, z: 0.5}
+  newPosition: {x: 0, y: 0, z: 0}
   count: 0
 --- !u!114 &493391185
 MonoBehaviour:
@@ -660,6 +661,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571949d0500341d42876277a010bd171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dice:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sceneNameTitle: TitleScene
   sceneNameAS: AitemSelectScene
   sceneNameG: GameScene
@@ -670,6 +684,7 @@ MonoBehaviour:
   enemyrandomdice: {fileID: 1979970548}
   choicedice: {fileID: 493391184}
   enemychoicedice: {fileID: 493391185}
+  pos: {x: -6, y: 0.3, z: 0}
   currentState: 2
 --- !u!1 &591035366
 GameObject:
