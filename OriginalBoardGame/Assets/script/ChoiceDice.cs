@@ -21,6 +21,9 @@ public class ChoiceDice : MonoBehaviour
     public GameObject APCounter;
 
     public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
+    public Vector3 newPosition = new Vector3(-6f, 0.3f, 0.0f);
+
+    public int count = 0;
 
     private Vector3[] position = new Vector3[]
     {
@@ -31,7 +34,7 @@ public class ChoiceDice : MonoBehaviour
         new Vector3(3.2f, 0.23f, 10)
     };
 
-    public int count = 0;
+    private List<GameObject> SetPosition = new List<GameObject>();
 
     Button btn;
 
@@ -69,7 +72,16 @@ public class ChoiceDice : MonoBehaviour
                 count++;
                 //再度クリックできないようにコライダーを消しておく
                 BigDice.GetComponent<BoxCollider2D>().enabled = false;
-                Dice.GetComponent<BoxCollider2D>().enabled = false;              
+                //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
+                Dice.GetComponent<BoxCollider2D>().enabled = false;
+
+                SetPosition.Add(BigDice);
+
+                if(count == position.Length)
+                {
+                    GameObject gameObject = SetPosition[SetPosition.Count - 1];
+                    gameObject.transform.position = newPosition;
+                }
             }
         }      
     }

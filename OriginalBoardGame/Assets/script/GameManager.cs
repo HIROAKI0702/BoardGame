@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject[] Dice;
+
     public string sceneNameTitle;
     public string sceneNameAS;
     public string sceneNameG;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     public EnemyRandomDice enemyrandomdice;
     public ChoiceDice choicedice;
     public EnemyChoiceDice enemychoicedice;
+
+    public Vector3 pos = new Vector3(-6f, 0.3f, 0.0f);
 
     public enum GameState
     {
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
                 MyTurnFlag = false;
                 if (!MyTurnFlag)
                 {
+                    choicedice.count = 0;
+                    Debug.Log("Enter");
                     StartCoroutine(TurnDeley());
                 }
             }
