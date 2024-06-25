@@ -287,6 +287,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43969824}
   m_CullTransparentMesh: 1
+--- !u!1 &114734406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114734407}
+  m_Layer: 0
+  m_Name: pos5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114734407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114734406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171495711}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &175684001
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +401,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &180884507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 180884508}
+  m_Layer: 0
+  m_Name: pos2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &180884508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180884507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.6, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171495711}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414454164
 GameObject:
@@ -522,20 +584,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
-  NormalSword: {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
-  NormalShield: {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
-  NormalBow: {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
-  NormalArmer: {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
-  NormalSteal: {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
-  NormalCounter: {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
-  APSword: {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
-  APShield: {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
-  APBow: {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
-  APArmer: {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
-  APSteal: {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
-  APCounter: {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
+  DiceObject:
+  - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
+  - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
+  - {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
+  - {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
+  - {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
+  - {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
+  - {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
+  - {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
+  - {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
+  - {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
+  - {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
+  - {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
   newScale: {x: 0.5, y: 0.5, z: 0.5}
-  newPosition: {x: 0, y: 0, z: 0}
   count: 0
 --- !u!114 &493391185
 MonoBehaviour:
@@ -550,18 +612,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
-  NormalSword: {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
-  NormalShield: {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
-  NormalBow: {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
-  NormalArmer: {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
-  NormalSteal: {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
-  NormalCounter: {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
-  APSword: {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
-  APShield: {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
-  APBow: {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
-  APArmer: {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
-  APSteal: {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
-  APCounter: {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
+  DiceObject:
+  - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
+  - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
+  - {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
+  - {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
+  - {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
+  - {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
+  - {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
+  - {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
+  - {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
+  - {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
+  - {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
+  - {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
   newScale: {x: 0.5, y: 0.5, z: 0.5}
   count: 0
 --- !u!1 &519420028
@@ -661,25 +724,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571949d0500341d42876277a010bd171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dice:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   sceneNameTitle: TitleScene
   sceneNameAS: AitemSelectScene
   sceneNameG: GameScene
   scenenameC: GameClear
   scenenameO: GameOver
   MyTurnFlag: 1
+  ReturnPushFlag: 0
   playerrandomdice: {fileID: 1979970547}
   enemyrandomdice: {fileID: 1979970548}
   choicedice: {fileID: 493391184}
@@ -769,6 +820,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926258276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926258277}
+  m_Layer: 0
+  m_Name: pos4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926258277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926258276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.8, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171495711}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &965213313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965213314}
+  m_Layer: 0
+  m_Name: pos1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965213314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965213313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.5, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171495711}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979088914
 GameObject:
@@ -890,6 +1003,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1171495710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171495711}
+  m_Layer: 0
+  m_Name: DiceShowPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1171495711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171495710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 965213314}
+  - {fileID: 180884508}
+  - {fileID: 1402629662}
+  - {fileID: 926258277}
+  - {fileID: 114734407}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255548052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1190,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1402629661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402629662}
+  m_Layer: 0
+  m_Name: pos3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402629662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402629661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.7, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171495711}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624435692
 GameObject:
@@ -1359,6 +1539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanagers: {fileID: 519420034}
+  choicedice: {fileID: 0}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   DiceButton: {fileID: 1979970542}
