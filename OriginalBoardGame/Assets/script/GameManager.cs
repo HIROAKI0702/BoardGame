@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] Dice;
-
     public string sceneNameTitle;
     public string sceneNameAS;
     public string sceneNameG;
@@ -14,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     //自分のターンか敵のターンかを判断
     public bool MyTurnFlag = true;
+    public bool ReturnPushFlag = false;
 
     public PlayerRandomDice playerrandomdice;
     public EnemyRandomDice enemyrandomdice;
@@ -60,6 +59,8 @@ public class GameManager : MonoBehaviour
                 {
                     choicedice.count = 0;
                     Debug.Log("Enter");
+                    ReturnPushFlag = true;
+                    Debug.Log(ReturnPushFlag);
                     StartCoroutine(TurnDeley());
                 }
             }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerRandomDice : MonoBehaviour
 {
     public GameManager gamemanagers;
+    public ChoiceDice choicedice;
 
     public GameObject Stage1;
     public GameObject Stage2;
@@ -77,7 +78,6 @@ public class PlayerRandomDice : MonoBehaviour
             //ランダムなプレハブを選択して生成
             GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
             GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
-
             LastTimeDice.Add(Dice);
 
             StartCoroutine(ReRoll());
@@ -90,6 +90,7 @@ public class PlayerRandomDice : MonoBehaviour
         {
             Destroy(obj);
         }
+
         LastTimeDice.Clear();
     }
 

@@ -7,18 +7,7 @@ public class EnemyChoiceDice : MonoBehaviour
 {
     public GameManager gamemanager;
 
-    public GameObject NormalSword;
-    public GameObject NormalShield;
-    public GameObject NormalBow;
-    public GameObject NormalArmer;
-    public GameObject NormalSteal;
-    public GameObject NormalCounter;
-    public GameObject APSword;
-    public GameObject APShield;
-    public GameObject APBow;
-    public GameObject APArmer;
-    public GameObject APSteal;
-    public GameObject APCounter;
+    public GameObject[] DiceObject;
 
     public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
 

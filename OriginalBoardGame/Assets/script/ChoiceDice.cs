@@ -6,24 +6,13 @@ using UnityEngine.UI;
 public class ChoiceDice : MonoBehaviour
 {
     public GameManager gamemanager;
-
-    public GameObject NormalSword;
-    public GameObject NormalShield;
-    public GameObject NormalBow;
-    public GameObject NormalArmer;
-    public GameObject NormalSteal;
-    public GameObject NormalCounter;
-    public GameObject APSword;
-    public GameObject APShield;
-    public GameObject APBow;
-    public GameObject APArmer;
-    public GameObject APSteal;
-    public GameObject APCounter;
+    public GameObject[] DiceObject;
 
     public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
-    public Vector3 newPosition = new Vector3(-6f, 0.3f, 0.0f);
 
     public int count = 0;
+
+    GameObject[] SetShowDice = new GameObject[5];
 
     private Vector3[] position = new Vector3[]
     {
@@ -33,15 +22,23 @@ public class ChoiceDice : MonoBehaviour
         new Vector3(1.58f, 0.23f, 10),
         new Vector3(3.2f, 0.23f, 10)
     };
+    private Vector3[] newpos = new Vector3[]
+    {
+        new Vector3(-7.5f,.3f,0.0f),
+        new Vector3(-6.6f,.3f,0.0f),
+        new Vector3(-5.7f,.3f,0.0f),
+        new Vector3(-4.8f,.3f,0.0f),
+        new Vector3(-3.9f,.3f,0.0f),
+    };
+    private Vector3 ScalelShowDice = new Vector3(0.35f, 0.35f, 0.0f);
 
-    private List<GameObject> SetPosition = new List<GameObject>();
-
-    Button btn;
+    private bool DiceMoveFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
     }
+
 
     // Update is called once per frame
     void Update()
@@ -50,9 +47,16 @@ public class ChoiceDice : MonoBehaviour
         {
             DiceClick();
         }
+
+        if (gamemanager.ReturnPushFlag == true)
+        {
+            Debug.Log(gamemanager.ReturnPushFlag);
+            DiceMoveFlag = true;
+            gamemanager.ReturnPushFlag = false;
+        }
     }
 
-    void DiceClick()
+    public void DiceClick()
     {  
         //クリックした場所ににオブジェクトがあるかどうか
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,20 +71,24 @@ public class ChoiceDice : MonoBehaviour
             if(tag.StartsWith("Normal")||tag.StartsWith("AP"))
             {
                 //オブジェクトを生成し拡大する
-                GameObject BigDice = Instantiate(Dice, position[count], Quaternion.identity);
-                BigDice.transform.localScale = newScale;
+                GameObject ChoiceDice = Instantiate(Dice, position[count], Quaternion.identity);
+                ChoiceDice.transform.localScale = newScale;
                 count++;
                 //再度クリックできないようにコライダーを消しておく
-                BigDice.GetComponent<BoxCollider2D>().enabled = false;
+                ChoiceDice.GetComponent<BoxCollider2D>().enabled = false;
                 //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
 
-                SetPosition.Add(BigDice);
-
-                if(count == position.Length)
+                if (DiceMoveFlag == true)
                 {
-                    GameObject gameObject = SetPosition[SetPosition.Count - 1];
-                    gameObject.transform.position = newPosition;
+                    Debug.Log(DiceMoveFlag);
+                    for (int i = 0; i < count; i++)
+                    {
+                        SetShowDice[i] = ChoiceDice;
+                        SetShowDice[i].transform.position = newpos[count - 1];
+                        SetShowDice[i].transform.localScale = ScalelShowDice;
+                        Debug.Log(i);
+                    }
                 }
             }
         }      
