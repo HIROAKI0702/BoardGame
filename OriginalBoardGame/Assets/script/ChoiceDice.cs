@@ -8,6 +8,8 @@ public class ChoiceDice : MonoBehaviour
     public GameManager gamemanager;
     public GameObject[] DiceObject;
 
+    GameObject ChoiceDiceObject;
+
     public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
 
     public int count = 0;
@@ -32,8 +34,6 @@ public class ChoiceDice : MonoBehaviour
     };
     private Vector3 ScalelShowDice = new Vector3(0.35f, 0.35f, 0.0f);
 
-    private bool DiceMoveFlag = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +48,18 @@ public class ChoiceDice : MonoBehaviour
             DiceClick();
         }
 
-        if (gamemanager.ReturnPushFlag == true)
+        if (gamemanager.ReturnPushFlag = true && Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log(gamemanager.ReturnPushFlag);
-            DiceMoveFlag = true;
+            Debug.Log(count);
+            for (int i = 0; i < count; i++)
+            {
+                SetShowDice[i] = ChoiceDiceObject;
+                SetShowDice[i].transform.position = newpos[count - 1];
+                SetShowDice[i].transform.localScale = ScalelShowDice;
+                Debug.Log(i);
+            }
+
             gamemanager.ReturnPushFlag = false;
         }
     }
@@ -71,25 +79,13 @@ public class ChoiceDice : MonoBehaviour
             if(tag.StartsWith("Normal")||tag.StartsWith("AP"))
             {
                 //オブジェクトを生成し拡大する
-                GameObject ChoiceDice = Instantiate(Dice, position[count], Quaternion.identity);
-                ChoiceDice.transform.localScale = newScale;
+                ChoiceDiceObject = Instantiate(Dice, position[count], Quaternion.identity);
+                ChoiceDiceObject.transform.localScale = newScale;
                 count++;
                 //再度クリックできないようにコライダーを消しておく
-                ChoiceDice.GetComponent<BoxCollider2D>().enabled = false;
+                ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
                 //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
-
-                if (DiceMoveFlag == true)
-                {
-                    Debug.Log(DiceMoveFlag);
-                    for (int i = 0; i < count; i++)
-                    {
-                        SetShowDice[i] = ChoiceDice;
-                        SetShowDice[i].transform.position = newpos[count - 1];
-                        SetShowDice[i].transform.localScale = ScalelShowDice;
-                        Debug.Log(i);
-                    }
-                }
             }
         }      
     }

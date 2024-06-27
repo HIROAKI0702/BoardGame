@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
                     choicedice.count = 0;
                     Debug.Log("Enter");
                     ReturnPushFlag = true;
-                    Debug.Log(ReturnPushFlag);
+                    Debug.Log(ReturnPushFlag); 
                     StartCoroutine(TurnDeley());
                 }
             }
