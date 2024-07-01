@@ -58,8 +58,6 @@ public class PlayerRandomDice : MonoBehaviour
 
     public void SpawnObjects()
     {
-        RemoveDice();
-
         //生成するオブジェクトの数を決定
         int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
@@ -78,6 +76,7 @@ public class PlayerRandomDice : MonoBehaviour
             LastTimeDice.Add(Dice);
 
             StartCoroutine(ReRoll());
+            RemoveDice();
         }
         rerollCount++;
         Debug.Log(choicedice.count);

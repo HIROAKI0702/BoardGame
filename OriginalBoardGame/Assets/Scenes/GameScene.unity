@@ -597,8 +597,8 @@ MonoBehaviour:
   - {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
   - {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
   - {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
-  newScale: {x: 0.5, y: 0.5, z: 0.5}
   count: 0
+  newScale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &493391185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,11 +1539,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanagers: {fileID: 519420034}
-  choicedice: {fileID: 0}
+  choicedice: {fileID: 493391184}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   DiceButton: {fileID: 1979970542}
   newSprite: {fileID: 21300000, guid: f59f4ee62682f964cad4f6a229995c79, type: 3}
+  minPosition: {x: -7.358, y: 1.527, z: 0}
+  maxPosition: {x: -4.519, y: 4.343, z: 0}
+  spawnObject: 5
+  minDistance: 1
   saikoroObject:
   - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
   - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
@@ -1563,10 +1567,6 @@ MonoBehaviour:
   - {x: -4.6, y: 1.5, z: 0}
   - {x: -7.2, y: 3.5, z: 0}
   - {x: -4.5, y: 4.3, z: 0}
-  minPosition: {x: -7.358, y: 1.527, z: 0}
-  maxPosition: {x: -4.519, y: 4.343, z: 0}
-  spawnObject: 5
-  minDistance: 1
 --- !u!114 &1979970548
 MonoBehaviour:
   m_ObjectHideFlags: 0
