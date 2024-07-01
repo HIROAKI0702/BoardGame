@@ -55,14 +55,12 @@ public class GameManager : MonoBehaviour
             {
                 //サイコロを５つ選んだら敵のターンになる
                 MyTurnFlag = false;
-                if (!MyTurnFlag)
-                {
-                    choicedice.count = 0;
-                    Debug.Log("Enter");
-                    ReturnPushFlag = true;
-                    Debug.Log(ReturnPushFlag); 
-                    StartCoroutine(TurnDeley());
-                }
+               
+                //choicedice.count = 0;
+                Debug.Log("Enter");
+                ReturnPushFlag = true;
+                Debug.Log(ReturnPushFlag); 
+                StartCoroutine(TurnDeley());             
             }
         }
     }

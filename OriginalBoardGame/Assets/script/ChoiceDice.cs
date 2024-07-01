@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class ChoiceDice : MonoBehaviour
 {
     public GameManager gamemanager;
+
     public GameObject[] DiceObject;
-
     GameObject ChoiceDiceObject;
-
-    public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
+    GameObject[] SetShowDice = new GameObject[5];
 
     public int count = 0;
 
-    GameObject[] SetShowDice = new GameObject[5];
+    //ダイスを選択時の許可フラグ
+    bool dicechoiceFlag = false;
 
-    private Vector3[] position = new Vector3[]
+    public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+    private Vector3[] setpos = new Vector3[]
     {
         new Vector3(-3.2f, 0.23f, 10),
         new Vector3(-1.58f, 0.23f, 10),
@@ -39,54 +41,52 @@ public class ChoiceDice : MonoBehaviour
     {
     }
 
-
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            DiceClick();
+            dicechoiceFlag = true;
         }
 
-        if (gamemanager.ReturnPushFlag = true && Input.GetKeyDown(KeyCode.Return))
+        if (dicechoiceFlag == true)
         {
-            Debug.Log(gamemanager.ReturnPushFlag);
-            Debug.Log(count);
+            //クリックした場所ににオブジェクトがあるかどうか
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
+
+            if (hit2d && count < setpos.Length)
+            {
+                GameObject Dice = hit2d.collider.gameObject;
+
+                string tag = Dice.tag;
+                //NormalまたはAPから始まるタグの時に動く
+                if (tag.StartsWith("Normal") || tag.StartsWith("AP"))
+                {
+                    //オブジェクトを生成し拡大する
+                    ChoiceDiceObject = Instantiate(Dice, setpos[count], Quaternion.identity);
+                    ChoiceDiceObject.transform.localScale = newScale;
+                    Destroy(Dice);
+
+                    SetShowDice[count] = ChoiceDiceObject;
+                    count++;
+                    //再度クリックできないようにコライダーを消しておく
+                    ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
+                    //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
+                    Dice.GetComponent<BoxCollider2D>().enabled = false;
+                }           
+            }           
+        }
+        //生成された自分のダイスを敵のターンになった後も見えるように脇に移動させる
+        if (gamemanager.ReturnPushFlag == true)
+        {
             for (int i = 0; i < count; i++)
             {
-                SetShowDice[i] = ChoiceDiceObject;
-                SetShowDice[i].transform.position = newpos[count - 1];
+                SetShowDice[i].transform.position = newpos[i];
                 SetShowDice[i].transform.localScale = ScalelShowDice;
-                Debug.Log(i);
             }
-
             gamemanager.ReturnPushFlag = false;
         }
-    }
-
-    public void DiceClick()
-    {  
-        //クリックした場所ににオブジェクトがあるかどうか
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
-  
-        if (hit2d  && count < position.Length)
-        {
-            GameObject Dice = hit2d.collider.gameObject;
-
-            string tag = Dice.tag;
-            //NormalまたはAPから始まるタグの時に動く
-            if(tag.StartsWith("Normal")||tag.StartsWith("AP"))
-            {
-                //オブジェクトを生成し拡大する
-                ChoiceDiceObject = Instantiate(Dice, position[count], Quaternion.identity);
-                ChoiceDiceObject.transform.localScale = newScale;
-                count++;
-                //再度クリックできないようにコライダーを消しておく
-                ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
-                //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
-                Dice.GetComponent<BoxCollider2D>().enabled = false;
-            }
-        }      
+        dicechoiceFlag = false;
     }
 }
