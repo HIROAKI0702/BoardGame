@@ -129,7 +129,8 @@ public class EnemyRandomDice : MonoBehaviour
             }
         }
 
-
+        gamemanager.MyTurnFlag = true;
+        Debug.Log(gamemanager.MyTurnFlag);
     }
 }
 

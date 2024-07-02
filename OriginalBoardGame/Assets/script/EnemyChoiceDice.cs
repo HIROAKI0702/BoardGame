@@ -88,11 +88,4 @@ public class EnemyChoiceDice : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
-
 }
