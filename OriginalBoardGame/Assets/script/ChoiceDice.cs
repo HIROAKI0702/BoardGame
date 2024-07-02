@@ -28,13 +28,13 @@ public class ChoiceDice : MonoBehaviour
     };
     private Vector3[] newpos = new Vector3[]
     {
-        new Vector3(-7.5f,.3f,0.0f),
-        new Vector3(-6.6f,.3f,0.0f),
-        new Vector3(-5.7f,.3f,0.0f),
-        new Vector3(-4.8f,.3f,0.0f),
-        new Vector3(-3.9f,.3f,0.0f),
+        new Vector3(-7.6f,0.5f,0.0f),
+        new Vector3(-6.8f,0.5f,0.0f),
+        new Vector3(-6.0f,0.5f,0.0f),
+        new Vector3(-5.2f,0.5f,0.0f),
+        new Vector3(-4.4f,0.5f,0.0f),
     };
-    private Vector3 ScalelShowDice = new Vector3(0.35f, 0.35f, 0.0f);
+    private Vector3 ScalelShowDice = new Vector3(0.3f, 0.3f, 0.0f);
 
     // Start is called before the first frame update
     void Start()

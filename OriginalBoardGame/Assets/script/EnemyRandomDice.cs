@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyRandomDice : MonoBehaviour
 {
     public GameManager gamemanager;
+    public EnemyChoiceDice ecd;
 
     public GameObject Stage1;
     public GameObject Stage2;
@@ -53,6 +54,7 @@ public class EnemyRandomDice : MonoBehaviour
             GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
             Instantiate(prefabSpawn, newPosition, Quaternion.identity);
         }
+        StartCoroutine(ecd.Enemy());
     }
 }
 

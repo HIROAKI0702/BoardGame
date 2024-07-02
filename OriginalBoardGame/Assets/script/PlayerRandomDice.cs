@@ -11,8 +11,7 @@ public class PlayerRandomDice : MonoBehaviour
     public GameObject Stage1;
     public GameObject Stage2;
     public GameObject DiceButton;
-    GameObject prefabSpawn;
-    GameObject Dice;
+    //GameObject prefabSpawn;
 
     public Sprite newSprite;
 
@@ -59,7 +58,9 @@ public class PlayerRandomDice : MonoBehaviour
     public void SpawnObjects()
     {
         //生成するオブジェクトの数を決定
-        int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
+        //int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
+
+        RemoveDice();
 
         //生成されたオブジェクトの数が指定された数に達するまでループ
         for (int i = 0; i < spawnObject - choicedice.count; i++)
@@ -71,13 +72,12 @@ public class PlayerRandomDice : MonoBehaviour
             spawnedPositions.Add(newPosition);
 
             //ランダムなプレハブを選択して生成
-            prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+            //prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+            GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
             LastTimeDice.Add(Dice);
-
-            StartCoroutine(ReRoll());
-            RemoveDice();
+       
         }
+        StartCoroutine(ReRoll());
         rerollCount++;
         Debug.Log(choicedice.count);
     }

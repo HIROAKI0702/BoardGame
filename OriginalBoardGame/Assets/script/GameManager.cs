@@ -56,10 +56,7 @@ public class GameManager : MonoBehaviour
                 //サイコロを５つ選んだら敵のターンになる
                 MyTurnFlag = false;
                
-                //choicedice.count = 0;
-                Debug.Log("Enter");
                 ReturnPushFlag = true;
-                Debug.Log(ReturnPushFlag); 
                 StartCoroutine(TurnDeley());             
             }
         }
@@ -136,18 +133,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
+        choicedice.count = 0;
+        Debug.Log(choicedice.count);
         enemyrandomdice.EnemyTurn();
-
-        StartCoroutine(EnemyDice());
-
-        yield break;
-    }
-
-    IEnumerator EnemyDice()
-    {
-        yield return new WaitForSeconds(2f);
-
-        enemychoicedice.EnemyDiceClick();
 
         yield break;
     }
