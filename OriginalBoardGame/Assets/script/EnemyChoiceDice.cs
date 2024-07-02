@@ -74,15 +74,19 @@ public class EnemyChoiceDice : MonoBehaviour
             //再度クリックできないようにコライダーを消しておく
             ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
         }
+        Invoke("DiceMove", 3f);
+    }
 
-        ////生成された自分のダイスを敵のターンになった後も見えるように脇に移動させる
-        //{
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        SetShowDice[i].transform.position = position[i];
-        //        SetShowDice[i].transform.localScale = ScalelShowDice;
-        //    }
-        //}
+    void DiceMove()
+    {  
+        //生成された自分のダイスを敵のターンになった後も見えるように脇に移動させる
+        {
+            for (int i = 0; i < count; i++)
+            {
+                SetShowDice[i].transform.position = position[i];
+                SetShowDice[i].transform.localScale = ScalelShowDice;
+            }
+        }
     }
 
 
