@@ -579,7 +579,6 @@ GameObject:
   m_Component:
   - component: {fileID: 493391183}
   - component: {fileID: 493391184}
-  - component: {fileID: 493391185}
   m_Layer: 0
   m_Name: DiceClickObject
   m_TagString: Untagged
@@ -615,6 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
+  APP: {fileID: 519420035}
   DiceObject:
   - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
   - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
@@ -630,34 +630,6 @@ MonoBehaviour:
   - {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
   count: 0
   newScale: {x: 0.5, y: 0.5, z: 0.5}
---- !u!114 &493391185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493391181}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da46e33e0ff51442ac42e8bcde8e05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamemanager: {fileID: 519420034}
-  DiceObject:
-  - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
-  - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
-  - {fileID: 5765692452384992903, guid: 9dcfc669af892ba4fb27fae9d9e5d613, type: 3}
-  - {fileID: 1198493617313324344, guid: a594992a5e4b145469e76777571a7a98, type: 3}
-  - {fileID: 48697939419017340, guid: 82d5585b695699c40a4e7344cb3dc435, type: 3}
-  - {fileID: 1898150367327607915, guid: fc4a82297dcaddc409d29b975b05fee5, type: 3}
-  - {fileID: 2701452434692006601, guid: a136408f41f0f8242a65ad1f44ce94d2, type: 3}
-  - {fileID: 3344362635535695484, guid: 316304f8faba4d645a72f661ab737e58, type: 3}
-  - {fileID: 7216107987292878116, guid: da1f520e89167874d85c27f3bc01c44d, type: 3}
-  - {fileID: 6002969374984261275, guid: c1bfeb87c7026924d9efa7f78e4cb52b, type: 3}
-  - {fileID: 7798237484565098874, guid: 5f1c9603e88fea545a13ed57ff147bba, type: 3}
-  - {fileID: 2683217984790085916, guid: efdede89d54888149ba746362595e451, type: 3}
-  newScale: {x: 0.5, y: 0.5, z: 0.5}
-  count: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +642,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -762,12 +735,26 @@ MonoBehaviour:
   scenenameO: GameOver
   MyTurnFlag: 1
   ReturnPushFlag: 0
+  atackTurnFlag: 0
   playerrandomdice: {fileID: 1979970547}
   enemyrandomdice: {fileID: 1979970548}
   choicedice: {fileID: 493391184}
   enemychoicedice: {fileID: 0}
   pos: {x: -6, y: 0.3, z: 0}
   currentState: 2
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64222cbb7583c6f4da68d9397d2acf5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamemanager: {fileID: 519420034}
 --- !u!1 &591035366
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,13 +851,14 @@ GameObject:
   - component: {fileID: 834903154}
   - component: {fileID: 834903153}
   - component: {fileID: 834903152}
+  - component: {fileID: 834903155}
   m_Layer: 5
   m_Name: ReRollButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &834903151
 RectTransform:
   m_ObjectHideFlags: 0
@@ -935,7 +923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 834903153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 834903155}
+        m_TargetAssemblyTypeName: ReRollButtonScript, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &834903153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +974,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834903150}
   m_CullTransparentMesh: 1
+--- !u!114 &834903155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834903150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a25e5024378faa47b3a95035f786b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prd: {fileID: 1979970547}
 --- !u!1 &911443143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1127,7 @@ GameObject:
   - component: {fileID: 1055788654}
   - component: {fileID: 1055788656}
   - component: {fileID: 1055788655}
+  - component: {fileID: 1055788657}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1183,6 +1197,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055788653}
   m_CullTransparentMesh: 1
+--- !u!114 &1055788657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055788653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a25e5024378faa47b3a95035f786b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prd: {fileID: 0}
 --- !u!1 &1067602579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,8 +1818,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 389}
-  m_SizeDelta: {x: 500, y: 350}
+  m_AnchoredPosition: {x: -191, y: 389}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979970544
 MonoBehaviour:
@@ -1902,14 +1929,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemanagers: {fileID: 519420034}
   choicedice: {fileID: 493391184}
+  reroll: {fileID: 0}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   DiceButton: {fileID: 1979970542}
-  newSprite: {fileID: 21300000, guid: f59f4ee62682f964cad4f6a229995c79, type: 3}
   minPosition: {x: -7.358, y: 1.527, z: 0}
   maxPosition: {x: -4.519, y: 4.343, z: 0}
   spawnObject: 5
   minDistance: 1
+  reRollFlag: 0
   saikoroObject:
   - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
   - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
@@ -1929,6 +1957,7 @@ MonoBehaviour:
   - {x: -4.6, y: 1.5, z: 0}
   - {x: -7.2, y: 3.5, z: 0}
   - {x: -4.5, y: 4.3, z: 0}
+  rerollCount: 0
 --- !u!114 &1979970548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
-  ecd: {fileID: 493391185}
+  ecd: {fileID: 0}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   minPosition: {x: 4.524, y: -4.345, z: 0}

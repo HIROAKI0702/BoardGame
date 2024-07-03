@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     //自分のターンか敵のターンかを判断
     public bool MyTurnFlag = true;
     public bool ReturnPushFlag = false;
+    public bool atackTurnFlag = false;
 
     public PlayerRandomDice playerrandomdice;
     public EnemyRandomDice enemyrandomdice;

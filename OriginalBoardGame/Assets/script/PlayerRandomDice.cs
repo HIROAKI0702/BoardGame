@@ -7,13 +7,12 @@ public class PlayerRandomDice : MonoBehaviour
 {
     public GameManager gamemanagers;
     public ChoiceDice choicedice;
+    public ReRollButtonScript reroll;
 
     public GameObject Stage1;
     public GameObject Stage2;
     public GameObject DiceButton;
     //GameObject prefabSpawn;
-
-    public Sprite newSprite;
 
     public Vector3 minPosition;
     public Vector3 maxPosition;
@@ -22,6 +21,9 @@ public class PlayerRandomDice : MonoBehaviour
     public int spawnObject = 5;
     //オブジェクト間の最小距離
     public float minDistance = 1.0f;
+
+    //リロール許可フラグ
+    public bool reRollFlag = false;
 
     //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
@@ -32,16 +34,14 @@ public class PlayerRandomDice : MonoBehaviour
     //前回生成されたオブジェクトを保存するリスト
     private List<GameObject> LastTimeDice = new List<GameObject>();
 
-    private Image image;
 
     Button btn;
 
-    int rerollCount = 0;
+    public int rerollCount = 0;
 
     void Start()
     {
         btn = GetComponent<Button>();
-        image = GetComponent<Image>();
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class PlayerRandomDice : MonoBehaviour
             LastTimeDice.Add(Dice);
        
         }
-        StartCoroutine(ReRoll());
+        reRollFlag = true;
         rerollCount++;
         Debug.Log(choicedice.count);
     }
@@ -89,21 +89,6 @@ public class PlayerRandomDice : MonoBehaviour
             Destroy(obj);
         }
         LastTimeDice.Clear();
-    }
-
-    IEnumerator ReRoll()
-    {
-        yield return new WaitForSeconds(2f);
-
-        image.sprite = newSprite;
-        btn.interactable = true;
-
-        if (rerollCount == 5)
-        {
-            btn.interactable = false;
-        }
-      
-        yield break;
-    }
+    }   
 }
 

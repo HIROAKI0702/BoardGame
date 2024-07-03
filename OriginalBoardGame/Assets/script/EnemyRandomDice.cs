@@ -128,9 +128,8 @@ public class EnemyRandomDice : MonoBehaviour
                 LastTimeDice[i].transform.position = targetPosition;
             }
         }
-
         gamemanager.MyTurnFlag = true;
-        Debug.Log(gamemanager.MyTurnFlag);
+        gamemanager.atackTurnFlag = true;
     }
 }
 

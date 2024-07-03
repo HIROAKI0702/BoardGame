@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class ChoiceDice : MonoBehaviour
 {
     public GameManager gamemanager;
+    public AtackPhaseProgram APP;
 
+    //サイコロオブジェクト(12個)
     public GameObject[] DiceObject;
     GameObject ChoiceDiceObject;
     GameObject[] SetShowDice = new GameObject[5];
@@ -73,9 +75,11 @@ public class ChoiceDice : MonoBehaviour
                     //再度クリックできないようにコライダーを消しておく
                     ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
                     //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
-                    Dice.GetComponent<BoxCollider2D>().enabled = false;
-                }           
-            }           
+                    Dice.GetComponent<BoxCollider2D>().enabled = false;             
+                }
+                //それぞれのダイスの動きを呼び出す
+                CallDiceTag(tag);
+            }          
         }
         //生成された自分のダイスを敵のターンになった後も見えるように脇に移動させる
         if (gamemanager.ReturnPushFlag == true)
@@ -87,6 +91,49 @@ public class ChoiceDice : MonoBehaviour
             }
             gamemanager.ReturnPushFlag = false;
         }
-        dicechoiceFlag = false;
+        dicechoiceFlag = false;        
+    }
+
+    public void CallDiceTag(string tag)
+    {
+        switch(tag)
+        {
+            case "NormalSword":
+                APP.NormalSwordFunction();
+                break;
+            case "NormalShield":
+                APP.NormalShieldFunction();
+                break;
+            case "NormalBow":
+                APP.NormalBowFunction();
+                break;
+            case "NormalArmer":
+                APP.NormalArmerFunction();
+                break;
+            case "NormalSteal":
+                APP.NormalStealFunction();
+                break;
+            case "NormalCounter":
+                APP.NormalCounterFunction();
+                break;
+            case "APSword":
+                APP.APSwordFunction();
+                break;
+            case "APShield":
+                APP.APShieldFunction();
+                break;
+            case "APBow":
+                APP.APBowFunction();
+                break;
+            case "APArmer":
+                APP.APArmerFunction();
+                break;
+            case "APSteal":
+                APP.APStealFunction();
+                break;
+            case "APCounter":
+                APP.APCounterFunction();
+                break;
+        }
     }
 }
