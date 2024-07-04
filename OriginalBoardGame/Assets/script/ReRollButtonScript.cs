@@ -23,15 +23,14 @@ public class ReRollButtonScript : MonoBehaviour
 
     public void OnClick()
     {
-        btn.interactable = false;
-        prd.SpawnObjects();
-
         if (prd.reRollFlag == true)
         {
+            prd.SpawnObjects();
             btn.interactable = true;
 
             if (prd.rerollCount == 5)
             {
+                Debug.Log(prd.rerollCount);
                 btn.interactable = false;
             }
         }

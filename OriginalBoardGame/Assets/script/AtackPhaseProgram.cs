@@ -18,61 +18,97 @@ public class AtackPhaseProgram : MonoBehaviour
 
     public void NormalSwordFunction()
     {
-        Debug.Log("NormalSwordFunction");
+        if(gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalSwordFunction");
+        }
     }
 
     public void NormalShieldFunction()
     {
-        Debug.Log("NormalShieldFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalShieldFunction");
+        }
     }
 
     public void NormalBowFunction()
     {
-        Debug.Log("NormalBowFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalBowFunction");
+        }
     }
 
     public void NormalArmerFunction()
     {
-        Debug.Log("NormalArmerFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalArmerFunction");
+        }
     }
 
     public void NormalStealFunction()
     {
-        Debug.Log("NormalStealFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalStealFunction");
+        }
     }
 
     public void NormalCounterFunction()
     {
-        Debug.Log("NormalCounterFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("NormalCounterFunction");
+        }
     }
 
     public void APSwordFunction()
     {
-        Debug.Log("APSwordFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APSwordFunction");
+        }
     }
 
     public void APShieldFunction()
     {
-        Debug.Log("APShieldFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APShieldFunction");
+        }
     }
 
     public void APBowFunction()
     {
-        Debug.Log("APBowFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APBowFunction");
+        }
     }
 
     public void APArmerFunction()
     {
-        Debug.Log("APArmerFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APArmerFunction");
+        }
     }
 
     public void APStealFunction()
     {
-        Debug.Log("APStealFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APStealFunction");
+        }
     }
 
     public void APCounterFunction()
     {
-        Debug.Log("APCounterFunction");
+        if (gamemanager.atackTurnFlag == true)
+        {
+            Debug.Log("APCounterFunction");
+        }
     }
 }

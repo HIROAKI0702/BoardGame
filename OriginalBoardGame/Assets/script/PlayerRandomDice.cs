@@ -75,11 +75,10 @@ public class PlayerRandomDice : MonoBehaviour
             //prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
             GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
             LastTimeDice.Add(Dice);
-       
+
+            rerollCount++;
         }
-        reRollFlag = true;
-        rerollCount++;
-        Debug.Log(choicedice.count);
+        reRollFlag = true;        
     }
 
     void RemoveDice()
