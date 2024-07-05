@@ -12,6 +12,7 @@ public class PlayerRandomDice : MonoBehaviour
     public GameObject Stage1;
     public GameObject Stage2;
     public GameObject DiceButton;
+    GameObject Dice;
     //GameObject prefabSpawn;
 
     public Vector3 minPosition;
@@ -38,6 +39,7 @@ public class PlayerRandomDice : MonoBehaviour
     Button btn;
 
     public int rerollCount = 0;
+    private GameObject prefabSpawn;
 
     void Start()
     {
@@ -60,6 +62,8 @@ public class PlayerRandomDice : MonoBehaviour
         //生成するオブジェクトの数を決定
         //int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
+        float randomDice = Random.Range(0f, 1f);
+
         RemoveDice();
 
         //生成されたオブジェクトの数が指定された数に達するまでループ
@@ -71,9 +75,20 @@ public class PlayerRandomDice : MonoBehaviour
             //リストに新しい位置を保存
             spawnedPositions.Add(newPosition);
 
-            //ランダムなプレハブを選択して生成
-            //prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
+            ////ランダムなプレハブを選択して生成
+            //prefabSpawn = saikoroObject[Random.Range(0, 12)];
+            ////GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
+            //GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
+
+            if(randomDice < 0.7f)
+            {
+                Dice = Instantiate(saikoroObject[Random.Range(0, 5)], newPosition, Quaternion.identity);
+            }
+            else
+            {
+                Dice = Instantiate(saikoroObject[Random.Range(6, 11)], newPosition, Quaternion.identity);
+            }
+
             LastTimeDice.Add(Dice);
 
             rerollCount++;
