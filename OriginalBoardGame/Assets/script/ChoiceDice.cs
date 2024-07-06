@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChoiceDice : MonoBehaviour
 {
     public GameManager gamemanager;
-    public AtackPhaseProgram APP;
+    public PlayerAttackPhaseProgram PAPP;
     public EnemyRandomDice ERD;
 
     //サイコロオブジェクト(12個)
@@ -46,9 +46,9 @@ public class ChoiceDice : MonoBehaviour
     //わきに移動させるときの拡大率
     private Vector3 ScalelShowDice = new Vector3(0.3f, 0.3f, 0.0f);
 
-    //関数を呼ぶためのタグのリスト
+    //ダイスの関数を呼ぶためのタグのリスト
     private List<string> selectTag = new List<string>();
-    //関数を呼ぶためのダイスのリスト
+    //ダイスの関数を呼ぶためのダイスのリスト
     private List<GameObject> selectObject = new List<GameObject>();
 
     // Start is called before the first frame update
@@ -84,6 +84,7 @@ public class ChoiceDice : MonoBehaviour
                     Destroy(Dice);
 
                     SetShowDice[count] = ChoiceDiceObject;
+                    //ダイスの関数を呼ぶためにタグとダイスを加える
                     selectTag.Add(tag);
                     selectObject.Add(ChoiceDiceObject);
                     count++;
@@ -95,7 +96,7 @@ public class ChoiceDice : MonoBehaviour
                     if(count == 5)
                     {
                         //それぞれのダイスの動きを呼び出す
-                        ERD.callDiceFlag = true;
+                        ERD.playercallDiceFlag = true;
                     }
                 }           
             }          
@@ -112,60 +113,60 @@ public class ChoiceDice : MonoBehaviour
         }
         dicechoiceFlag = false;
 
-        if(ERD.callDiceFlag == true)
+        if(ERD.playercallDiceFlag == true)
         {
-            CallDiceTag();
-           ERD.callDiceFlag = false;
+            PlayerDiceCallTag();
+            ERD.playercallDiceFlag = false;
         }
     }
 
-    void CallDiceTag()
+    void PlayerDiceCallTag()
     {
         for(int i = 0; i < selectTag.Count; i++)
         {
-            CallDiceFunction(selectTag[i], selectObject[i]);
+            PlayerDiceCallFunction(selectTag[i], selectObject[i]);
         }
     }
 
-    public void CallDiceFunction(string tag, GameObject dice)
+    public void PlayerDiceCallFunction(string tag, GameObject dice)
     {
         switch(tag)
         {
             case "NormalSword":
-                APP.NormalSwordFunction(dice);
+                PAPP.PlayerNormalSwordFunction(dice);
                 break;
             case "NormalShield":
-                APP.NormalShieldFunction(dice);
+                PAPP.PlayerNormalShieldFunction(dice);
                 break;
             case "NormalBow":
-                APP.NormalBowFunction(dice);
+                PAPP.PlayerNormalBowFunction(dice);
                 break;
             case "NormalArmer":
-                APP.NormalArmerFunction(dice);
+                PAPP.PlayerNormalArmerFunction(dice);
                 break;
             case "NormalSteal":
-                APP.NormalStealFunction(dice);
+                PAPP.PlayerNormalStealFunction(dice);
                 break;
             case "NormalCounter":
-                APP.NormalCounterFunction(dice);
+                PAPP.PlayerNormalCounterFunction(dice);
                 break;
             case "APSword":
-                APP.APSwordFunction(dice);
+                PAPP.PlayerAPSwordFunction(dice);
                 break;
             case "APShield":
-                APP.APShieldFunction(dice);
+                PAPP.PlayerAPShieldFunction(dice);
                 break;
             case "APBow":
-                APP.APBowFunction(dice);
+                PAPP.PlayerAPBowFunction(dice);
                 break;
             case "APArmer":
-                APP.APArmerFunction(dice);
+                PAPP.PlayerAPArmerFunction(dice);
                 break;
             case "APSteal":
-                APP.APStealFunction(dice);
+                PAPP.PlayerAPStealFunction(dice);
                 break;
             case "APCounter":
-                APP.APCounterFunction(dice);
+                PAPP.PlayerAPCounterFunction(dice);
                 break;
         }
     }

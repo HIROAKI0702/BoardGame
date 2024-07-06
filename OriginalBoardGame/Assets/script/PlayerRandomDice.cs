@@ -48,10 +48,10 @@ public class PlayerRandomDice : MonoBehaviour
 
     private void Update()
     {
-        if(gamemanagers.MyTurnFlag == true)
-        {
-            btn.interactable = true;
-        }
+        //if(gamemanagers.MyTurnFlag == true)
+        //{
+        //    btn.interactable = false;
+        //}
     }
 
     public void OnClick()

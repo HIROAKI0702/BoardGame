@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyRandomDice : MonoBehaviour
 {
     public GameManager gamemanager;
-    public EnemyChoiceDice ecd;
+    public EnemyAttackPhaseProgram EAPP;
 
     public GameObject Stage1;
     public GameObject Stage2;
@@ -15,11 +15,14 @@ public class EnemyRandomDice : MonoBehaviour
 
     //生成するオブジェクトの数
     public int spawnObject = 5;
+    public int count = 0;
+
     //オブジェクト間の最小距離
     public float minDistance = 1.0f;
 
     //ダイスに対応した関数を呼ぶためのフラグ
-    public bool callDiceFlag = false;
+    public bool playercallDiceFlag = false;
+    public bool enemycallDiceFlag = false;
 
     //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
@@ -29,6 +32,13 @@ public class EnemyRandomDice : MonoBehaviour
     private List<Vector3> spawnedPositions = new List<Vector3>();
     //前回生成されたオブジェクトを保存するリスト
     private List<GameObject> LastTimeDice = new List<GameObject>();
+    //ダイスに対応する関数を保持するリスト
+    private List<System.Action> diceFunction = new List<System.Action>();
+    //ダイスの関数を呼ぶためのタグのリスト
+    private List<string> selectTag = new List<string>();
+    //ダイスの関数を呼ぶためのダイスのリスト
+    private List<GameObject> selectObject = new List<GameObject>();
+
     //ダイスの移動先の位置のリスト
     public List<Vector3> movePosition;
     public List<Vector3> setPosition;
@@ -45,30 +55,52 @@ public class EnemyRandomDice : MonoBehaviour
 
     private void Update()
     {
+        if (enemycallDiceFlag == true)
+        {
+            EnemyDiceCallTag();
+            enemycallDiceFlag = false;
+        }
     }
 
     public void EnemyTurn()
     {
-        RemoveDice();
-
-        //生成するオブジェクトの数を決定
-        int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
-
-        //生成されたオブジェクトの数が指定された数に達するまでループ
-        for (int i = 0; i < objectsToSpawn; i++)
+        if (gamemanager.MyTurnFlag == false)
         {
-            //指定された位置を取得
-            Vector3 newPosition = spawnPositions[i];
+            RemoveDice();
 
-            //リストに新しい位置を保存
-            spawnedPositions.Add(newPosition);
+            //生成するオブジェクトの数を決定
+            //int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
-            //ランダムなプレハブを選択して生成
-            //GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
-            LastTimeDice.Add(Dice);
+            //生成されたオブジェクトの数が指定された数に達するまでループ
+            for (int i = 0; i < spawnObject; i++)
+            {
+                //指定された位置を取得
+                Vector3 newPosition = spawnPositions[i];
+
+                //リストに新しい位置を保存
+                spawnedPositions.Add(newPosition);
+                
+                count++;
+
+                //ランダムなプレハブを選択して生成
+                //GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
+                GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+
+                string tag = Dice.tag;
+
+                LastTimeDice.Add(Dice);
+                //ダイスの関数を呼ぶためにタグとダイスを加える
+                selectTag.Add(tag);
+                selectObject.Add(Dice);
+
+                if (count == 5)
+                {
+                    //それぞれのダイスの動きを呼び出す
+                    enemycallDiceFlag = true;
+                }
+            }
+            StartCoroutine(MoveDice());          
         }
-        StartCoroutine(MoveDice());
     }
 
     void RemoveDice()
@@ -98,6 +130,57 @@ public class EnemyRandomDice : MonoBehaviour
 
         return weight[Random.Range(0, weight.Length)];
 
+    }
+
+    void EnemyDiceCallTag()
+    {
+        for (int i = 0; i < selectTag.Count; i++)
+        {
+            EnemyDiceCallFunction(selectTag[i], selectObject[i]);
+        }
+    }
+
+    void EnemyDiceCallFunction(string tag, GameObject dice)
+    {
+        switch (tag)
+        {
+            case "NormalSword":
+                EAPP.EnemyNormalSwordFunction(dice);
+                break;
+            case "NormalShield":
+                EAPP.EnemyNormalShieldFunction(dice);
+                break;
+            case "NormalBow":
+                EAPP.EnemyNormalBowFunction(dice);
+                break;
+            case "NormalArmer":
+                EAPP.EnemyNormalArmerFunction(dice);
+                break;
+            case "NormalSteal":
+                EAPP.EnemyNormalStealFunction(dice);
+                break;
+            case "NormalCounter":
+                EAPP.EnemyNormalCounterFunction(dice);
+                break;
+            case "APSword":
+                EAPP.EnemyAPSwordFunction(dice);
+                break;
+            case "APShield":
+                EAPP.EnemyAPShieldFunction(dice);
+                break;
+            case "APBow":
+                EAPP.EnemyAPBowFunction(dice);
+                break;
+            case "APArmer":
+                EAPP.EnemyAPArmerFunction(dice);
+                break;
+            case "APSteal":
+                EAPP.EnemyAPStealFunction(dice);
+                break;
+            case "APCounter":
+                EAPP.EnemyAPCounterFunction(dice);
+                break;
+        }
     }
 
     IEnumerator MoveDice()
@@ -151,8 +234,10 @@ public class EnemyRandomDice : MonoBehaviour
             }
         }
         gamemanager.MyTurnFlag = true;
-        gamemanager.atackTurnFlag = true;
-        callDiceFlag = true;
+        gamemanager.playerAttackTurnFlag = true;
+        gamemanager.enemyAttackTurnFlag = true;
+        playercallDiceFlag = true;
+        enemycallDiceFlag = true;
     }
 }
 
