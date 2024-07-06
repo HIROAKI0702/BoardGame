@@ -16,7 +16,7 @@ public class AtackPhaseProgram : MonoBehaviour
     {
     }
 
-    public void NormalSwordFunction()
+    public void NormalSwordFunction(GameObject dice)
     {
         if(gamemanager.atackTurnFlag == true)
         {
@@ -24,7 +24,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void NormalShieldFunction()
+    public void NormalShieldFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -32,7 +32,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void NormalBowFunction()
+    public void NormalBowFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -40,7 +40,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void NormalArmerFunction()
+    public void NormalArmerFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -48,7 +48,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void NormalStealFunction()
+    public void NormalStealFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -56,7 +56,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void NormalCounterFunction()
+    public void NormalCounterFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -64,7 +64,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APSwordFunction()
+    public void APSwordFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -72,7 +72,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APShieldFunction()
+    public void APShieldFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -80,7 +80,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APBowFunction()
+    public void APBowFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -88,7 +88,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APArmerFunction()
+    public void APArmerFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -96,7 +96,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APStealFunction()
+    public void APStealFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
@@ -104,7 +104,7 @@ public class AtackPhaseProgram : MonoBehaviour
         }
     }
 
-    public void APCounterFunction()
+    public void APCounterFunction(GameObject dice)
     {
         if (gamemanager.atackTurnFlag == true)
         {
