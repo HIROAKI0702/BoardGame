@@ -18,6 +18,9 @@ public class EnemyRandomDice : MonoBehaviour
     //オブジェクト間の最小距離
     public float minDistance = 1.0f;
 
+    //ダイスに対応した関数を呼ぶためのフラグ
+    public bool callDiceFlag = false;
+
     //さいころのプレハブを保存するリスト
     public List<GameObject> saikoroObject;
     //生成する位置のリスト
@@ -62,11 +65,10 @@ public class EnemyRandomDice : MonoBehaviour
 
             //ランダムなプレハブを選択して生成
             //GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-            GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
+            GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
             LastTimeDice.Add(Dice);
         }
         StartCoroutine(MoveDice());
-        //StartCoroutine(ecd.Enemy());
     }
 
     void RemoveDice()
@@ -76,6 +78,26 @@ public class EnemyRandomDice : MonoBehaviour
             Destroy(obj);
         }
         LastTimeDice.Clear();
+    }
+
+    int GetRandomDice()
+    {
+        int[] weight = new int[20];
+        int index = 0;
+
+        //0～5の範囲で選ばれる
+        for (int i = 0; i < 6; i++)
+        {
+            weight[index++] = i;
+            weight[index++] = i;//2倍にする
+        }
+        for (int i = 6; i < saikoroObject.Count; i++)
+        {
+            weight[index++] = i;
+        }
+
+        return weight[Random.Range(0, weight.Length)];
+
     }
 
     IEnumerator MoveDice()
@@ -130,6 +152,7 @@ public class EnemyRandomDice : MonoBehaviour
         }
         gamemanager.MyTurnFlag = true;
         gamemanager.atackTurnFlag = true;
+        callDiceFlag = true;
     }
 }
 

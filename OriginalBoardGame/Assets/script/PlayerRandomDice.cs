@@ -48,6 +48,10 @@ public class PlayerRandomDice : MonoBehaviour
 
     private void Update()
     {
+        if(gamemanagers.MyTurnFlag == true)
+        {
+            btn.interactable = true;
+        }
     }
 
     public void OnClick()
@@ -62,7 +66,7 @@ public class PlayerRandomDice : MonoBehaviour
         //生成するオブジェクトの数を決定
         //int objectsToSpawn = Mathf.Min(spawnPositions.Count, saikoroObject.Count);
 
-        float randomDice = Random.Range(0f, 1f);
+        float randomDice = Random.Range(0, 90);
 
         RemoveDice();
 
@@ -77,23 +81,11 @@ public class PlayerRandomDice : MonoBehaviour
 
             ////ランダムなプレハブを選択して生成
             //prefabSpawn = saikoroObject[Random.Range(0, 12)];
-            ////GameObject Dice = Instantiate(saikoroObject[Random.Range(0, saikoroObject.Count)], newPosition, Quaternion.identity);
-            //GameObject Dice = Instantiate(prefabSpawn, newPosition, Quaternion.identity);
-
-            if(randomDice < 0.7f)
-            {
-                Dice = Instantiate(saikoroObject[Random.Range(0, 5)], newPosition, Quaternion.identity);
-            }
-            else
-            {
-                Dice = Instantiate(saikoroObject[Random.Range(6, 11)], newPosition, Quaternion.identity);
-            }
+            GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
 
             LastTimeDice.Add(Dice);
-
-            rerollCount++;
         }
-        reRollFlag = true;        
+        reRollFlag = true;    
     }
 
     void RemoveDice()
@@ -103,6 +95,26 @@ public class PlayerRandomDice : MonoBehaviour
             Destroy(obj);
         }
         LastTimeDice.Clear();
-    }   
+    }
+
+    int GetRandomDice()
+    {
+        int[] weight = new int[20];
+        int index = 0;
+
+        //0～5の範囲で選ばれる
+        for(int i = 0; i <　6; i++)
+        {
+            weight[index++] = i;
+            weight[index++] = i;//2倍にする
+        }
+        for (int i = 6; i < saikoroObject.Count; i++)
+        {
+            weight[index++] = i;
+        }
+
+        return weight[Random.Range(0, weight.Length)];
+
+    }
 }
 
