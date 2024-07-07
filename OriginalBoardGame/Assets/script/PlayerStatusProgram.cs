@@ -7,7 +7,7 @@ public class PlayerStatusProgram : MonoBehaviour
     public int p_Hp = 100;
     public int p_SwordAttack = 10;
     public int p_BowAttack = 10;
-    public int p_Defense = 5;
+    public int p_Defense = 10;
     public int p_AitemPoint = 0;
     public int p_CounterAttack = 10;
 

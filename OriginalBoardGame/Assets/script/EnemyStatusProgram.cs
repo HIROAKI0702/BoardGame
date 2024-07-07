@@ -7,7 +7,7 @@ public class EnemyStatusProgram : MonoBehaviour
     public int e_Hp = 100;
     public int e_SwordAttack = 10;
     public int e_BowAttack = 10;
-    public int e_Defense = 5;
+    public int e_Defense = 10;
     public int e_AitemPoint = 0;
     public int e_CounterAttack = 10;
 

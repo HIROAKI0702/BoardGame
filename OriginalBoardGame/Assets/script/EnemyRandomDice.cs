@@ -6,6 +6,7 @@ public class EnemyRandomDice : MonoBehaviour
 {
     public GameManager gamemanager;
     public EnemyAttackPhaseProgram EAPP;
+    public FunctionCallScript FCS;
 
     public GameObject Stage1;
     public GameObject Stage2;
@@ -136,50 +137,7 @@ public class EnemyRandomDice : MonoBehaviour
     {
         for (int i = 0; i < selectTag.Count; i++)
         {
-            EnemyDiceCallFunction(selectTag[i], selectObject[i]);
-        }
-    }
-
-    void EnemyDiceCallFunction(string tag, GameObject dice)
-    {
-        switch (tag)
-        {
-            case "NormalSword":
-                EAPP.EnemyNormalSwordFunction(dice);
-                break;
-            case "NormalShield":
-                EAPP.EnemyNormalShieldFunction(dice);
-                break;
-            case "NormalBow":
-                EAPP.EnemyNormalBowFunction(dice);
-                break;
-            case "NormalArmer":
-                EAPP.EnemyNormalArmerFunction(dice);
-                break;
-            case "NormalSteal":
-                EAPP.EnemyNormalStealFunction(dice);
-                break;
-            case "NormalCounter":
-                EAPP.EnemyNormalCounterFunction(dice);
-                break;
-            case "APSword":
-                EAPP.EnemyAPSwordFunction(dice);
-                break;
-            case "APShield":
-                EAPP.EnemyAPShieldFunction(dice);
-                break;
-            case "APBow":
-                EAPP.EnemyAPBowFunction(dice);
-                break;
-            case "APArmer":
-                EAPP.EnemyAPArmerFunction(dice);
-                break;
-            case "APSteal":
-                EAPP.EnemyAPStealFunction(dice);
-                break;
-            case "APCounter":
-                EAPP.EnemyAPCounterFunction(dice);
-                break;
+            FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i]);
         }
     }
 

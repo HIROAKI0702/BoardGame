@@ -25,8 +25,8 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyNormalSwordFunction");
-            ESP.e_SwordAttackFlag = true;
             PSP.p_Hp -= ESP.e_SwordAttack;
+            ESP.e_SwordAttackFlag = true;
             Debug.Log("プレイヤーに攻撃をして" + ESP.e_SwordAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + PSP.p_Hp);
         }
     }
@@ -38,7 +38,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
             Debug.Log("EnemyNormalShieldFunction");
             if (PSP.p_BowAttackFlag == true)
             {
-                ESP.e_Hp += ESP.e_Defense;
+                ESP.e_Hp += PSP.p_BowAttack;
                 Debug.Log("プレイヤーの攻撃を受けて5ダメージ受けた、残りHP" + ESP.e_Hp);
             }
             PSP.p_BowAttackFlag = false;
@@ -50,8 +50,8 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyNormalBowFunction");
-            ESP.e_BowAttackFlag = true;
             PSP.p_Hp -= ESP.e_BowAttack;
+            ESP.e_BowAttackFlag = true;
             Debug.Log("プレイヤーに攻撃をして" + PSP.p_BowAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + PSP.p_Hp);
         }
     }
@@ -63,7 +63,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
             Debug.Log("EnemyNormalArmerFunction");
             if (PSP.p_SwordAttackFlag == true)
             {
-                ESP.e_Hp += ESP.e_Defense;
+                ESP.e_Hp += PSP.p_SwordAttack;
                 Debug.Log("プレイヤーの攻撃を受けて5ダメージ受けた、残りHP" + ESP.e_Hp);
             }
             PSP.p_SwordAttackFlag = false;
@@ -72,12 +72,15 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
 
     public void EnemyNormalStealFunction(GameObject dice)
     {
-        if (gamemanager.enemyAttackTurnFlag == true && ESP.e_AitemPoint >= 1)
+        if (gamemanager.enemyAttackTurnFlag == true)
         {
-            Debug.Log("EnemyNormalStealFunction");
-            PSP.p_AitemPoint--;
-            ESP.e_AitemPoint++;
-            Debug.Log("プレイヤーのアイテムポイントを1盗んだ、自分のアイテムポイントは" + ESP.e_AitemPoint);
+            if (PSP.p_AitemPoint >= 1)
+            {
+                Debug.Log("EnemyNormalStealFunction");
+                PSP.p_AitemPoint--;
+                ESP.e_AitemPoint++;
+                Debug.Log("プレイヤーのアイテムポイントを1盗んだ、自分のアイテムポイントは" + ESP.e_AitemPoint);
+            }
         }
     }
 
@@ -86,7 +89,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyNormalCounterFunction");
-            if (PSP.p_CounterAttackFlag == true)
+            if (PSP.p_SwordAttackFlag == true || PSP.p_BowAttackFlag)
             {
                 PSP.p_Hp -= ESP.e_CounterAttack;
                 Debug.Log("プレイヤーの攻撃に反撃して" + ESP.e_CounterAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + PSP.p_Hp);
@@ -100,8 +103,8 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyAPSwordFunction");
-            ESP.e_SwordAttackFlag = true;
             PSP.p_Hp -= ESP.e_SwordAttack;
+            ESP.e_SwordAttackFlag = true;
             ESP.e_AitemPoint++;
             Debug.Log("プレイヤーに攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + PSP.p_Hp + "自分のアイテムポイント" + ESP.e_AitemPoint);
         }
@@ -114,7 +117,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
             Debug.Log("EnemyAPShieldFunction");
             if (PSP.p_BowAttackFlag == true)
             {
-                ESP.e_Hp += ESP.e_Defense;
+                ESP.e_Hp += PSP.p_BowAttack;
             }
             ESP.e_AitemPoint++;
             PSP.p_BowAttackFlag = false;
@@ -127,8 +130,8 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyAPBowFunction");
-            ESP.e_BowAttackFlag = true;
             PSP.p_Hp -= ESP.e_BowAttack;
+            ESP.e_BowAttackFlag = true;
             ESP.e_AitemPoint++;
             Debug.Log("プレイヤーに攻撃をして" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + PSP.p_Hp + "自分のアイテムポイント" + ESP.e_AitemPoint);
         }
@@ -141,7 +144,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
             Debug.Log("EnemyAPArmerFunction");
             if (PSP.p_SwordAttackFlag == true)
             {
-                ESP.e_Hp += ESP.e_Defense;
+                ESP.e_Hp += PSP.p_SwordAttack;
             }
             ESP.e_AitemPoint++;
             PSP.p_SwordAttackFlag = false;
@@ -151,7 +154,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
 
     public void EnemyAPStealFunction(GameObject dice)
     {
-        if (gamemanager.enemyAttackTurnFlag == true && ESP.e_AitemPoint >= 1)
+        if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyAPStealFunction");
             if (PSP.p_AitemPoint >= 1)
@@ -169,7 +172,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
         if (gamemanager.enemyAttackTurnFlag == true)
         {
             Debug.Log("EnemyAPCounterFunction");
-            if (PSP.p_CounterAttackFlag == true)
+            if (PSP.p_SwordAttackFlag == true || PSP.p_BowAttackFlag)
             {
                 PSP.p_Hp -= ESP.e_CounterAttack;
             }

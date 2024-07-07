@@ -8,6 +8,7 @@ public class ChoiceDice : MonoBehaviour
     public GameManager gamemanager;
     public PlayerAttackPhaseProgram PAPP;
     public EnemyRandomDice ERD;
+    public FunctionCallScript FCS;
 
     //サイコロオブジェクト(12個)
     public GameObject[] DiceObject;
@@ -124,50 +125,7 @@ public class ChoiceDice : MonoBehaviour
     {
         for(int i = 0; i < selectTag.Count; i++)
         {
-            PlayerDiceCallFunction(selectTag[i], selectObject[i]);
-        }
-    }
-
-    public void PlayerDiceCallFunction(string tag, GameObject dice)
-    {
-        switch(tag)
-        {
-            case "NormalSword":
-                PAPP.PlayerNormalSwordFunction(dice);
-                break;
-            case "NormalShield":
-                PAPP.PlayerNormalShieldFunction(dice);
-                break;
-            case "NormalBow":
-                PAPP.PlayerNormalBowFunction(dice);
-                break;
-            case "NormalArmer":
-                PAPP.PlayerNormalArmerFunction(dice);
-                break;
-            case "NormalSteal":
-                PAPP.PlayerNormalStealFunction(dice);
-                break;
-            case "NormalCounter":
-                PAPP.PlayerNormalCounterFunction(dice);
-                break;
-            case "APSword":
-                PAPP.PlayerAPSwordFunction(dice);
-                break;
-            case "APShield":
-                PAPP.PlayerAPShieldFunction(dice);
-                break;
-            case "APBow":
-                PAPP.PlayerAPBowFunction(dice);
-                break;
-            case "APArmer":
-                PAPP.PlayerAPArmerFunction(dice);
-                break;
-            case "APSteal":
-                PAPP.PlayerAPStealFunction(dice);
-                break;
-            case "APCounter":
-                PAPP.PlayerAPCounterFunction(dice);
-                break;
+            FCS.PlayerDiceCallFunction(selectTag[i], selectObject[i]);
         }
     }
 }
