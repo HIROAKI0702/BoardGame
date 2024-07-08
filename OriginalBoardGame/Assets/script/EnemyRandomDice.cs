@@ -38,7 +38,7 @@ public class EnemyRandomDice : MonoBehaviour
     //ダイスの関数を呼ぶためのタグのリスト
     private List<string> selectTag = new List<string>();
     //ダイスの関数を呼ぶためのダイスのリスト
-    private List<GameObject> selectObject = new List<GameObject>();
+    public List<GameObject> selectObject = new List<GameObject>();
 
     //ダイスの移動先の位置のリスト
     public List<Vector3> movePosition;
@@ -99,6 +99,8 @@ public class EnemyRandomDice : MonoBehaviour
                     //それぞれのダイスの動きを呼び出す
                     enemycallDiceFlag = true;
                 }
+
+                Dice.GetComponent<BoxCollider2D>().enabled = false;
             }
             StartCoroutine(MoveDice());          
         }

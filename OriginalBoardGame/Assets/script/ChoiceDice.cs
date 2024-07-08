@@ -50,7 +50,7 @@ public class ChoiceDice : MonoBehaviour
     //ダイスの関数を呼ぶためのタグのリスト
     private List<string> selectTag = new List<string>();
     //ダイスの関数を呼ぶためのダイスのリスト
-    private List<GameObject> selectObject = new List<GameObject>();
+    public List<GameObject> selectObject = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
