@@ -100,6 +100,7 @@ public class EnemyRandomDice : MonoBehaviour
                     enemycallDiceFlag = true;
                 }
 
+                //触れないようにコライダーを消しておく
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
             }
             StartCoroutine(MoveDice());          
@@ -108,6 +109,7 @@ public class EnemyRandomDice : MonoBehaviour
 
     void RemoveDice()
     {
+        //リロールで再生成する際に、前のダイスを消す
         foreach (GameObject obj in LastTimeDice)
         {
             Destroy(obj);
@@ -137,6 +139,7 @@ public class EnemyRandomDice : MonoBehaviour
 
     void EnemyDiceCallTag()
     {
+        //タグの個数分（5個）
         for (int i = 0; i < selectTag.Count; i++)
         {
             FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i]);
@@ -157,8 +160,9 @@ public class EnemyRandomDice : MonoBehaviour
 
                 while(elapsedTime < duration)
                 {
+                    //線形補完により２転換の距離を滑らかに移動させる　始点　　　　　 終点　　　　　　補完の割合
                     LastTimeDice[i].transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
-                    LastTimeDice[i].transform.localScale = NewScale;
+                    LastTimeDice[i].transform.localScale = NewScale;//サイズ変更
                     elapsedTime += Time.deltaTime;
                     yield return null;
                 }

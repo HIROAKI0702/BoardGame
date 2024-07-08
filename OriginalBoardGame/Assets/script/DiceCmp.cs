@@ -16,15 +16,6 @@ public class DiceCmp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 5; i++)
-        {
-            if(choicedice.selectObject[i].tag == "NormalSword" || 
-               choicedice.selectObject[i].tag == "APSword" && 
-               ERD.selectObject[i].tag == "NormalArmer" || 
-               ERD.selectObject[i].tag == "APArmer")
-            {
-
-            }
-        }
+        
     }
 }
