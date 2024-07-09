@@ -17,7 +17,6 @@ public class ChoiceDice : MonoBehaviour
     //選択したダイスをターンが終わった後にわきに移すためにChoiceDiceObjectを格納するオブジェクト
     GameObject[] SetShowDice = new GameObject[5];
 
-    //
     public int count = 0;
 
     //ダイスを選択時の許可フラグ
@@ -25,6 +24,8 @@ public class ChoiceDice : MonoBehaviour
 
     //選択したダイスを真ん中に出すときの拡大率
     public Vector3 newScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+    public Text pushEnter;
 
     //ダイスを真ん中に出すための位置
     private Vector3[] setpos = new Vector3[]
@@ -48,7 +49,7 @@ public class ChoiceDice : MonoBehaviour
     private Vector3 ScalelShowDice = new Vector3(0.3f, 0.3f, 0.0f);
 
     //ダイスの関数を呼ぶためのタグのリスト
-    private List<string> selectTag = new List<string>();
+    public List<string> selectTag = new List<string>();
     //ダイスの関数を呼ぶためのダイスのリスト
     public List<GameObject> selectObject = new List<GameObject>();
 
@@ -93,13 +94,12 @@ public class ChoiceDice : MonoBehaviour
                     ChoiceDiceObject.GetComponent<BoxCollider2D>().enabled = false;
                     //真ん中に生成されたさいころをクリックできないようにコライダーを消しておく
                     Dice.GetComponent<BoxCollider2D>().enabled = false;
-
-                    if(count == 5)
-                    {
-                        //それぞれのダイスの動きを呼び出す
-                        ERD.playercallDiceFlag = true;
-                    }
-                }           
+                } 
+                
+                if(count == 5)
+                {
+                    pushEnter.text = "Push To Enter";
+                }
             }          
         }
         //生成された自分のダイスを敵のターンになった後も見えるように脇に移動させる
@@ -125,7 +125,9 @@ public class ChoiceDice : MonoBehaviour
     {
         for(int i = 0; i < selectTag.Count; i++)
         {
-            FCS.PlayerDiceCallFunction(selectTag[i], selectObject[i]);
+            //FCS.PlayerDiceCallFunction(selectTag[i], selectObject[i]);
+
+            PAPP.ResolveDiceEffects();
         }
     }
 }

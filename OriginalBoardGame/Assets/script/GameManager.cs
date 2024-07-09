@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
             {
                 //サイコロを５つ選んだら敵のターンになる
                 MyTurnFlag = false;
-               
+                choicedice.pushEnter.text = "";
+
                 ReturnPushFlag = true;
                 StartCoroutine(TurnDeley());             
             }

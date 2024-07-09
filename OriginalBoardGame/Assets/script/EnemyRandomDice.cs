@@ -94,12 +94,6 @@ public class EnemyRandomDice : MonoBehaviour
                 selectTag.Add(tag);
                 selectObject.Add(Dice);
 
-                if (count == 5)
-                {
-                    //それぞれのダイスの動きを呼び出す
-                    enemycallDiceFlag = true;
-                }
-
                 //触れないようにコライダーを消しておく
                 Dice.GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -198,8 +192,6 @@ public class EnemyRandomDice : MonoBehaviour
             }
         }
         gamemanager.MyTurnFlag = true;
-        gamemanager.playerAttackTurnFlag = true;
-        gamemanager.enemyAttackTurnFlag = true;
         playercallDiceFlag = true;
         enemycallDiceFlag = true;
     }

@@ -6,6 +6,8 @@ public class FunctionCallScript : MonoBehaviour
 {
     public EnemyAttackPhaseProgram EAPP;
     public PlayerAttackPhaseProgram PAPP;
+    public ChoiceDice choicedice;
+    public EnemyRandomDice ERD;
 
     // Start is called before the first frame update
     void Start()
@@ -43,22 +45,22 @@ public class FunctionCallScript : MonoBehaviour
                 break;
             case "NormalSword":
                 PAPP.PlayerNormalSwordFunction(dice);
-                break;               
+                break;
             case "NormalBow":
                 PAPP.PlayerNormalBowFunction(dice);
-                break;         
+                break;
             case "NormalSteal":
                 PAPP.PlayerNormalStealFunction(dice);
-                break;         
+                break;
             case "APSword":
                 PAPP.PlayerAPSwordFunction(dice);
-                break;            
+                break;
             case "APBow":
                 PAPP.PlayerAPBowFunction(dice);
-                break;            
+                break;
             case "APSteal":
                 PAPP.PlayerAPStealFunction(dice);
-                break;            
+                break;
         }
     }
 
