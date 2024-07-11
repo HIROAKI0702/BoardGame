@@ -31,7 +31,24 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
 
     public void ResolveDiceEffects()
     {
-        
+        if(gamemanager.playerAttackTurnFlag == true)
+        {
+            for (int i = 0; i < playerDiceList.Count; i++)
+            {
+                GameObject playerDice = playerDiceList[i];
+                for(int j = 0; j < enemyDiceList.Count; j++)
+                {
+                    GameObject enemyDice = enemyDiceList[i];
+                    CompareDice(playerDice, enemyDice);
+                }
+            }
+
+        }
+    }
+
+    private void CompareDice(GameObject playerDice,GameObject enemyDice)
+    {
+
     }
 
     public void PlayerNormalSwordFunction(GameObject dice)
