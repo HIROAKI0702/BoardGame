@@ -42,13 +42,12 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
                     CompareDice(playerDice, enemyDice);
                 }
             }
-
         }
     }
 
     private void CompareDice(GameObject playerDice,GameObject enemyDice)
     {
-
+        
     }
 
     public void PlayerNormalSwordFunction(GameObject dice)
