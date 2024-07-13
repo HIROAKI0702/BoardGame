@@ -36,7 +36,7 @@ public class EnemyRandomDice : MonoBehaviour
     //ダイスに対応する関数を保持するリスト
     private List<System.Action> diceFunction = new List<System.Action>();
     //ダイスの関数を呼ぶためのタグのリスト
-    private List<string> selectTag = new List<string>();
+    public List<string> selectTag = new List<string>();
     //ダイスの関数を呼ぶためのダイスのリスト
     public List<GameObject> selectObject = new List<GameObject>();
 
@@ -136,7 +136,7 @@ public class EnemyRandomDice : MonoBehaviour
         //タグの個数分（5個）
         for (int i = 0; i < selectTag.Count; i++)
         {
-            FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i]);
+            EAPP.ConpaireDice();
         }
     }
 

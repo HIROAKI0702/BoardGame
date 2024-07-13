@@ -10,13 +10,6 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
     public ChoiceDice choicedice;
     public EnemyRandomDice ERD;
 
-    public int count = 0;
-
-    public bool[] playerDiceFlagCount = new bool[5];
-
-    public List<GameObject> playerDiceList = new List<GameObject>();
-    public List<GameObject> enemyDiceList = new List<GameObject>();
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,145 +19,102 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
     }
 
-    public void ResolveDiceEffects()
+    public void ConpaireDice()
     {
-        if(gamemanager.playerAttackTurnFlag == true)
+        for(int i = 0; i < choicedice.selectObject.Count; i++)
         {
-            for (int i = 0; i < playerDiceList.Count; i++)
+            for(int j = 0; j < ERD.selectObject.Count; j++)
             {
-                GameObject playerDice = playerDiceList[i];
-                for(int j = 0; j < enemyDiceList.Count; j++)
-                {
-                    GameObject enemyDice = enemyDiceList[i];
-                    CompareDice(playerDice, enemyDice);
-                }
+                StatusChange(choicedice.selectObject[i], ERD.selectObject[j]);
             }
         }
     }
 
-    private void CompareDice(GameObject playerDice,GameObject enemyDice)
+    private void StatusChange(GameObject playerDice,GameObject enemyDice)
     {
-        
-    }
+        string playerDiceTag = playerDice.tag;
+        string enemyDiceTag = enemyDice.tag;
 
-    public void PlayerNormalSwordFunction(GameObject dice)
-    {
-        Debug.Log("PlayerNormalSwordFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        for (int i = 0; i < ERD.selectObject.Count; i++)
+        if(playerDiceTag == "NormalSword" && (enemyDiceTag != "NoromalArmer" || enemyDiceTag != "APArmer"))
         {
-            if(ERD.selectObject[i].tag == "NormalArmer")
-            {
-
-            }
+            ESP.e_Hp -= PSP.p_SwordAttack;
+            Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
 
-        Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);        
-    }
+        if (playerDiceTag == "NormalBow" &&(enemyDiceTag != "NormalShiel" || enemyDiceTag != "APShiel"))
+        {
+            ESP.e_Hp -= PSP.p_BowAttack;
+            Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
+        }
 
-    public void PlayerNormalShieldFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerNormalShieldFunction");
+        if (playerDiceTag == "NormalSteal" && ESP.e_AitemPoint > 0)
+        {
+            ESP.e_AitemPoint--;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
+        }
 
-        playerDiceFlagCount[count++] = true;
+        if (playerDiceTag == "NoromalCounter" && 
+            (enemyDiceTag == "NormalSword" || enemyDiceTag == "APSword") || 
+            (enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
+        {
+            ESP.e_Hp -= PSP.p_CounterAttack;
+            Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
+        }
 
-        Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
-    }
+        if (playerDiceTag == "NormalArmor" && (enemyDiceTag == "NomalSword" || enemyDiceTag == "APSword"))
+        {
+            Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
+        }
 
-    public void PlayerNormalBowFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerNormalBowFunction");
+        if (playerDiceTag == "NormalShield" && (enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
+        {
+            Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
+        }
 
-        playerDiceFlagCount[count++] = true;
+        if (playerDiceTag == "APSword" && (enemyDiceTag != "NoromalArmer" || enemyDiceTag != "APArmer"))
+        {
+            ESP.e_Hp -= PSP.p_SwordAttack;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
+        }
 
+        if (playerDiceTag == "APBow" && (enemyDiceTag != "NormalShiel" || enemyDiceTag != "APShiel"))
+        {
+            ESP.e_Hp -= PSP.p_BowAttack;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
+        }
 
-        Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);      
-    }
+        if (playerDiceTag == "APSteal" && ESP.e_AitemPoint > 0)
+        {
+            ESP.e_AitemPoint--;
+            PSP.p_AitemPoint++;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
+        }
 
-    public void PlayerNormalArmerFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerNormalArmerFunction");
+        if (playerDiceTag == "APCounter" &&
+            (enemyDiceTag == "NormalSword" || enemyDiceTag == "APSword") ||
+            (enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
+        {
+            ESP.e_Hp -= PSP.p_CounterAttack;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
+        }
 
-        playerDiceFlagCount[count++] = true;
+        if (playerDiceTag == "APArmor" && (enemyDiceTag == "NomalSword" || enemyDiceTag == "APSword"))
+        {
+            PSP.p_AitemPoint++;
+            Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
+        }
 
-
-        Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);             
-    }
-
-    public void PlayerNormalStealFunction(GameObject dice)
-    {               
-        Debug.Log("PlayerNormalStealFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);                      
-    }
-
-    public void PlayerNormalCounterFunction(GameObject dice)
-    {        
-        Debug.Log("PlayerNormalCounterFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp); 
-    }
-
-    public void PlayerAPSwordFunction(GameObject dice)
-    {        
-        Debug.Log("PlayerAPSwordFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP:" + ESP.e_Hp + "自分のアイテムポイント" + PSP.p_AitemPoint);       
-    }
-
-    public void PlayerAPShieldFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerAPShieldFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp + "自分のアイテムポイント" + PSP.p_AitemPoint);        
-    }
-
-    public void PlayerAPBowFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerAPBowFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp + "自分のアイテムポイント" + PSP.p_AitemPoint);       
-    }
-
-    public void PlayerAPArmerFunction(GameObject dice)
-    {       
-        Debug.Log("PlayerAPArmerFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp + "自分のアイテムポイント" + PSP.p_AitemPoint);       
-    }
-
-    public void PlayerAPStealFunction(GameObject dice)
-    {
-        Debug.Log("PlayerAPStealFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
-    }
-
-    public void PlayerAPCounterFunction(GameObject dice)
-    {        
-        Debug.Log("PlayerAPCounterFunction");
-
-        playerDiceFlagCount[count++] = true;
-
-        Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp + "自分のアイテムポイント" + PSP.p_AitemPoint);        
+        if (playerDiceTag == "APShield" && (enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
+        {
+            PSP.p_AitemPoint++;
+            Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
+        }
     }
 }
