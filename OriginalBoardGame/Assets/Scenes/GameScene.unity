@@ -846,7 +846,7 @@ MonoBehaviour:
   gamemanager: {fileID: 519420034}
   PAPP: {fileID: 2132205798}
   ERD: {fileID: 1979970548}
-  FCS: {fileID: 2132205800}
+  FCS: {fileID: 0}
   DiceObject:
   - {fileID: 191200394413959183, guid: 1c3dc4f48dc459c4a86c4ba929692bf2, type: 3}
   - {fileID: 9053077849903368247, guid: 18411e7d5d82a1e409e90939c02d9917, type: 3}
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemanager: {fileID: 519420034}
   EAPP: {fileID: 2132205799}
-  FCS: {fileID: 2132205800}
+  FCS: {fileID: 0}
   Stage1: {fileID: 175684001}
   Stage2: {fileID: 591035366}
   minPosition: {x: 4.524, y: -4.345, z: 0}
@@ -2670,6 +2670,7 @@ MonoBehaviour:
   - {x: 7.3, y: -2.8, z: 0}
   - {x: 6.2, y: -4.4, z: 0}
   - {x: 4.9, y: -4.3, z: 0}
+  selectTag: []
   selectObject: []
   movePosition:
   - {x: -3.2, y: 0.23, z: 0}
@@ -2795,7 +2796,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132205797}
-  - component: {fileID: 2132205800}
   - component: {fileID: 2132205798}
   - component: {fileID: 2132205799}
   m_Layer: 0
@@ -2835,12 +2835,8 @@ MonoBehaviour:
   gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
-  choicedice: {fileID: 0}
-  ERD: {fileID: 0}
-  count: 0
-  playerDiceFlagCount: 0000000000
-  playerDiceList: []
-  enemyDiceList: []
+  choicedice: {fileID: 493391184}
+  ERD: {fileID: 1979970548}
 --- !u!114 &2132205799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,24 +2852,8 @@ MonoBehaviour:
   gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
-  count: 0
-  enemyDiceFlagCount: 0000000000
---- !u!114 &2132205800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132205795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea88ed5aeeb1ca42bf28a5aba7387cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EAPP: {fileID: 2132205799}
-  PAPP: {fileID: 2132205798}
-  choicedice: {fileID: 0}
-  ERD: {fileID: 0}
+  choicedice: {fileID: 493391184}
+  ERD: {fileID: 1979970548}
 --- !u!1 &2140241806
 GameObject:
   m_ObjectHideFlags: 0

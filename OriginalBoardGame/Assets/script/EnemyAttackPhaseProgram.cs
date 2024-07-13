@@ -25,12 +25,12 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
 
     public void ConpaireDice()
     {
-        for (int i = 0; i < choicedice.selectObject.Count; i++)
+        // プレイヤーと敵のサイコロの数が同じであることを確認
+        int diceCount = Mathf.Min(choicedice.selectObject.Count, ERD.selectObject.Count);
+
+        for (int i = 0; i < diceCount; i++)
         {
-            for (int j = 0; j < ERD.selectObject.Count; j++)
-            {
-                StatusChange(choicedice.selectObject[i], ERD.selectObject[j]);
-            }
+            StatusChange(choicedice.selectObject[i], ERD.selectObject[i]);
         }
     }
 
@@ -118,5 +118,9 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
             ESP.e_AitemPoint++;
             Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
         }
+
+        //HPが０以下にならないようにする
+        PSP.p_Hp = Mathf.Max(0, PSP.p_Hp);
+        ESP.e_Hp = Mathf.Max(0, ESP.e_Hp);
     }    
 }
