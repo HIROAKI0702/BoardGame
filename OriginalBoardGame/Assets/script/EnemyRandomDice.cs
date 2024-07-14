@@ -136,7 +136,7 @@ public class EnemyRandomDice : MonoBehaviour
         //タグの個数分（5個）
         for (int i = 0; i < selectTag.Count; i++)
         {
-            EAPP.ConpaireDice();
+            EAPP.CompareDice();
         }
     }
 
