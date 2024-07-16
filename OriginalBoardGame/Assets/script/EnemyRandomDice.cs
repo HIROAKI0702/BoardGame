@@ -7,6 +7,7 @@ public class EnemyRandomDice : MonoBehaviour
     public GameManager gamemanager;
     public EnemyAttackPhaseProgram EAPP;
     public FunctionCallScript FCS;
+    public ChoiceDice choicedice;
 
     public GameObject Stage1;
     public GameObject Stage2;
@@ -136,7 +137,7 @@ public class EnemyRandomDice : MonoBehaviour
         //タグの個数分（5個）
         for (int i = 0; i < selectTag.Count; i++)
         {
-            EAPP.CompareDice();
+            FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i],choicedice.selectObject[i]);
         }
     }
 

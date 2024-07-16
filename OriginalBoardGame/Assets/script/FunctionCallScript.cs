@@ -18,92 +18,91 @@ public class FunctionCallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-//    public void PlayerDiceCallFunction(string tag, GameObject dice)
-//    {
-//        switch (tag)
-//        {
-//            case "NormalShield":
-//                PAPP.PlayerNormalShieldFunction(dice);
-//                break;
-//            case "NormalArmer":
-//                PAPP.PlayerNormalArmerFunction(dice);
-//                break;
-//            case "NormalCounter":
-//                PAPP.PlayerNormalCounterFunction(dice);
-//                break;
-//            case "APShield":
-//                PAPP.PlayerAPShieldFunction(dice);
-//                break;
-//            case "APArmer":
-//                PAPP.PlayerAPArmerFunction(dice);
-//                break;
-//            case "APCounter":
-//                PAPP.PlayerAPCounterFunction(dice);
-//                break;
-//            case "NormalSword":
-//                PAPP.PlayerNormalSwordFunction(dice);
-//                break;
-//            case "NormalBow":
-//                PAPP.PlayerNormalBowFunction(dice);
-//                break;
-//            case "NormalSteal":
-//                PAPP.PlayerNormalStealFunction(dice);
-//                break;
-//            case "APSword":
-//                PAPP.PlayerAPSwordFunction(dice);
-//                break;
-//            case "APBow":
-//                PAPP.PlayerAPBowFunction(dice);
-//                break;
-//            case "APSteal":
-//                PAPP.PlayerAPStealFunction(dice);
-//                break;
-//        }
-//    }
+    public void PlayerDiceCallFunction(string tag, GameObject playerdice, GameObject enemydice)
+    {
+        switch (tag)
+        {
+            case "NormalShield":
+                PAPP.PlayerNormalShieldFunction(playerdice, enemydice);
+                break;
+            case "NormalArmer":
+                PAPP.PlayerNormalArmerFunction(playerdice, enemydice);
+                break;
+            case "NormalCounter":
+                PAPP.PlayerNormalCounterFunction(playerdice, enemydice);
+                break;
+            case "APShield":
+                PAPP.PlayerAPShieldFunction(playerdice, enemydice);
+                break;
+            case "APArmer":
+                PAPP.PlayerAPArmerFunction(playerdice, enemydice);
+                break;
+            case "APCounter":
+                PAPP.PlayerAPCounterFunction(playerdice, enemydice);
+                break;
+            case "NormalSword":
+                PAPP.PlayerNormalSwordFunction(playerdice, enemydice);
+                break;
+            case "NormalBow":
+                PAPP.PlayerNormalBowFunction(playerdice, enemydice);
+                break;
+            case "NormalSteal":
+                PAPP.PlayerNormalStealFunction(playerdice, enemydice);
+                break;
+            case "APSword":
+                PAPP.PlayerAPSwordFunction(playerdice, enemydice);
+                break;
+            case "APBow":
+                PAPP.PlayerAPBowFunction(playerdice, enemydice);
+                break;
+            case "APSteal":
+                PAPP.PlayerAPStealFunction(playerdice, enemydice);
+                break;
+        }
+    }
 
-//    public void EnemyDiceCallFunction(string tag, GameObject dice)
-//    {
-//        switch (tag)
-//        {
-//            case "NormalShield":
-//                EAPP.EnemyNormalShieldFunction(dice);
-//                break;
-//            case "NormalArmer":
-//                EAPP.EnemyNormalArmerFunction(dice);
-//                break;
-//            case "NormalCounter":
-//                EAPP.EnemyNormalCounterFunction(dice);
-//                break;
-//            case "APShield":
-//                EAPP.EnemyAPShieldFunction(dice);
-//                break;
-//            case "APArmer":
-//                EAPP.EnemyAPArmerFunction(dice);
-//                break;
-//            case "APCounter":
-//                EAPP.EnemyAPCounterFunction(dice);
-//                break;
-//            case "NormalSword":
-//                EAPP.EnemyNormalSwordFunction(dice);
-//                break;           
-//            case "NormalBow":
-//                EAPP.EnemyNormalBowFunction(dice);
-//                break;           
-//            case "NormalSteal":
-//                EAPP.EnemyNormalStealFunction(dice);
-//                break;          
-//            case "APSword":
-//                EAPP.EnemyAPSwordFunction(dice);
-//                break;           
-//            case "APBow":
-//                EAPP.EnemyAPBowFunction(dice);
-//                break;          
-//            case "APSteal":
-//                EAPP.EnemyAPStealFunction(dice);
-//                break;           
-//        }
-//    }
+    public void EnemyDiceCallFunction(string tag, GameObject playerdice,GameObject enemydice)
+    {
+        switch (tag)
+        {
+            case "NormalShield":
+                EAPP.EnemyNormalShieldFunction(playerdice, enemydice);
+                break;
+            case "NormalArmer":
+                EAPP.EnemyNormalArmerFunction(playerdice, enemydice);
+                break;
+            case "NormalCounter":
+                EAPP.EnemyNormalCounterFunction(playerdice, enemydice);
+                break;
+            case "APShield":
+                EAPP.EnemyAPShieldFunction(playerdice, enemydice);
+                break;
+            case "APArmer":
+                EAPP.EnemyAPArmerFunction(playerdice, enemydice);
+                break;
+            case "APCounter":
+                EAPP.EnemyAPCounterFunction(playerdice, enemydice);
+                break;
+            case "NormalSword":
+                EAPP.EnemyNormalSwordFunction(playerdice, enemydice);
+                break;
+            case "NormalBow":
+                EAPP.EnemyNormalBowFunction(playerdice, enemydice);
+                break;
+            case "NormalSteal":
+                EAPP.EnemyNormalStealFunction(playerdice, enemydice);
+                break;
+            case "APSword":
+                EAPP.EnemyAPSwordFunction(playerdice, enemydice);
+                break;
+            case "APBow":
+                EAPP.EnemyAPBowFunction(playerdice, enemydice);
+                break;
+            case "APSteal":
+                EAPP.EnemyAPStealFunction(playerdice, enemydice);
+                break;
+        }
+    }
 }

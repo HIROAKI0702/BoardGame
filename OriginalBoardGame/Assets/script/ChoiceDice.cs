@@ -125,9 +125,7 @@ public class ChoiceDice : MonoBehaviour
     {
         for(int i = 0; i < selectTag.Count; i++)
         {
-            //FCS.PlayerDiceCallFunction(selectTag[i], selectObject[i]);
-
-            PAPP.ConpaireDice();
+            FCS.PlayerDiceCallFunction(selectTag[i], selectObject[i],ERD.selectObject[i]);
         }
     }
 }

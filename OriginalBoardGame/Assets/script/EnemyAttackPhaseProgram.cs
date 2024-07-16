@@ -9,6 +9,10 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
     public EnemyStatusProgram ESP;
     public ChoiceDice choicedice;
     public EnemyRandomDice ERD;
+    public StatusChange SC;
+
+    string playerDiceTag;
+    string enemyDiceTag;
 
     // Start is called before the first frame update
     void Start()
@@ -22,103 +26,171 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
 
     }
 
-    public void CompareDice()
+    public void EnemyNormalSwordFunction(GameObject p_dice, GameObject e_dice)
     {
-        // プレイヤーと敵のサイコロの数が同じであることを確認
-        int diceCount = Mathf.Min(choicedice.selectObject.Count, ERD.selectObject.Count);
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
 
-        for (int i = 0; i < diceCount; i++)
+        for (int i = 0; i < 5; i++)
         {
-            StatusChange(choicedice.selectObject[i], ERD.selectObject[i]);
+            if (ERD.selectObject[i].tag == "NormalSword")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
         }
     }
 
-    private void StatusChange(GameObject playerDice, GameObject enemyDice)
+    public void EnemyNormalBowFunction(GameObject p_dice, GameObject e_dice)
     {
-        string playerDiceTag = playerDice.tag;
-        string enemyDiceTag = enemyDice.tag;
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
 
-        if (enemyDiceTag == "NormalSword" && (playerDiceTag != "NormalArmor" && playerDiceTag != "APArmor"))
+        for (int i = 0; i < 5; i++)
         {
-            PSP.p_Hp -= ESP.e_SwordAttack;
-            Debug.Log("敵に攻撃をして" + ESP.e_SwordAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
+            if (ERD.selectObject[i].tag == "NormalBow")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
         }
-
-        if (enemyDiceTag == "NormalBow" && (playerDiceTag != "NormalShield" && playerDiceTag != "APShield"))
-        {
-            PSP.p_Hp -= ESP.e_BowAttack;
-            Debug.Log("敵に攻撃をして" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "NormalSteal" && PSP.p_AitemPoint > 0)
-        {
-            PSP.p_AitemPoint--;
-            ESP.e_AitemPoint++;
-            Debug.Log("敵のアイテムポイントを1盗んだ、敵のアイテムポイントは" + ESP.e_AitemPoint);
-        }
-
-        if (enemyDiceTag == "NormalCounter" &&
-            (playerDiceTag == "NormalSword" || playerDiceTag == "APSword" ||
-            playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
-        {
-            PSP.p_Hp -= ESP.e_CounterAttack;
-            Debug.Log("敵の攻撃に反撃して" + ESP.e_CounterAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "NormalArmor" && (playerDiceTag == "NormalSword" || playerDiceTag == "APSword"))
-        {
-            Debug.Log("敵の攻撃を無効化した、敵の残りHP" + ESP.e_Hp);
-        }
-
-        if (enemyDiceTag == "NormalShield" && (playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
-        {
-            Debug.Log("敵の攻撃を無効化した、敵の残りHP" + ESP.e_Hp);
-        }
-
-        if (enemyDiceTag == "APSword" && (playerDiceTag != "NormalArmor" && playerDiceTag != "APArmor"))
-        {
-            PSP.p_Hp -= ESP.e_SwordAttack;
-            ESP.e_AitemPoint++;
-            Debug.Log("敵に攻撃をして" + ESP.e_SwordAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "APBow" && (playerDiceTag != "NormalShield" && playerDiceTag != "APShield"))
-        {
-            PSP.p_Hp -= ESP.e_BowAttack;
-            ESP.e_AitemPoint++;
-            Debug.Log("敵に攻撃をして" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "APSteal" && PSP.p_AitemPoint > 0)
-        {
-            PSP.p_AitemPoint--;
-            ESP.e_AitemPoint += 2; // Note: Steal and APSteal seem to increment by 2
-            Debug.Log("敵のアイテムポイントを2盗んだ、敵のアイテムポイントは" + ESP.e_AitemPoint);
-        }
-
-        if (enemyDiceTag == "APCounter" &&
-            (playerDiceTag == "NormalSword" || playerDiceTag == "APSword" ||
-            playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
-        {
-            PSP.p_Hp -= ESP.e_CounterAttack;
-            ESP.e_AitemPoint++;
-            Debug.Log("敵の攻撃に反撃して" + ESP.e_CounterAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "APArmor" && (playerDiceTag == "NormalSword" || playerDiceTag == "APSword"))
-        {
-            ESP.e_AitemPoint++;
-            Debug.Log("敵の攻撃を無効化した、敵の残りHP" + PSP.p_Hp);
-        }
-
-        if (enemyDiceTag == "APShield" && (playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
-        {
-            ESP.e_AitemPoint++;
-            Debug.Log("敵の攻撃を無効化した、敵の残りHP" + PSP.p_Hp);
-        }
-
-        // Ensure HP does not go below 0
-        PSP.p_Hp = Mathf.Max(0, PSP.p_Hp);
-        ESP.e_Hp = Mathf.Max(0, ESP.e_Hp);
     }
+
+    public void EnemyNormalShieldFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "NormalShield")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyNormalArmerFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "NormalArmer")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyNormalStealFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "NormalSteal")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyNormalCounterFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "NormalCounter")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPSwordFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "APSword")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPBowFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "APBow")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPShieldFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "APShield")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPArmerFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "APArmer")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPStealFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ERD.selectObject[i].tag == "APSteal")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }
+
+    public void EnemyAPCounterFunction(GameObject p_dice, GameObject e_dice)
+    {
+        playerDiceTag = p_dice.tag;
+        enemyDiceTag = e_dice.tag;
+
+        for (int i = 0; i < 5; i++)
+        {            
+            if (ERD.selectObject[i].tag == "APCounter")
+            {
+                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+            }
+        }
+    }   
 }
