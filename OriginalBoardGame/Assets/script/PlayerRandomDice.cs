@@ -81,7 +81,8 @@ public class PlayerRandomDice : MonoBehaviour
 
             ////ランダムなプレハブを選択して生成
             //prefabSpawn = saikoroObject[Random.Range(0, 12)];
-            GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+            //GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+            GameObject Dice = Instantiate(saikoroObject[2], newPosition, Quaternion.identity);
 
             LastTimeDice.Add(Dice);
         }

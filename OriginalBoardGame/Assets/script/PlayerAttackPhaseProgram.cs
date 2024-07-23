@@ -15,6 +15,8 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
     string playerDiceTag;
     string enemyDiceTag;
 
+    public int count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,174 +26,73 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    public void PlayerNormalSwordFunction( GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for(int i = 0; i < 5; i++)
-        {          
-            if(choicedice.selectObject[i].tag == "NormalSword")
+        for(int i = 0; i < 1; i++)
+        {
+            if (count == 5)
             {
                 SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }           
-        }
-    }
-
-    public void PlayerNormalBowFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "NormalBow")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }            
-        }
-    }
-
-    public void PlayerNormalShieldFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "NormalShield")
-            {
-                    SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+                count = 0;
             }
-            
-        }
+        }        
     }
 
-    public void PlayerNormalArmerFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "NormalArmer")
-            {
-                  SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }           
-        }
+    public void PlayerNormalSwordFunction()
+    {      
+         count++;
     }
 
-    public void PlayerNormalStealFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "NormalSteal")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+    public void PlayerNormalBowFunction()
+    {       
+        count++;       
     }
 
-    public void PlayerNormalCounterFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerNormalShieldFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "NormalCounter")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void PlayerAPSwordFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerNormalArmerFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APSword")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void PlayerAPBowFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APBow")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+    public void PlayerNormalStealFunction()
+    {      
+        count++;
     }
 
-    public void PlayerAPShieldFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerNormalCounterFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APShield")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void PlayerAPArmerFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerAPSwordFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APArmer")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+        count++;                
     }
 
-    public void PlayerAPStealFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerAPBowFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APSteal")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void PlayerAPCounterFunction(GameObject p_dice, GameObject e_dice)
+    public void PlayerAPShieldFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
+        count++;
+    }
 
-        for (int i = 0; i < 5; i++)
-        {
-            if (choicedice.selectObject[i].tag == "APCounter")
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-            }
-        }
+    public void PlayerAPArmerFunction()
+    {
+        count++;
+    }
+
+    public void PlayerAPStealFunction()
+    {    
+        count++;
+    }
+
+    public void PlayerAPCounterFunction()
+    {
+        count++;
     }
 }

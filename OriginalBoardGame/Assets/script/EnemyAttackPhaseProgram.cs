@@ -14,6 +14,8 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
     string playerDiceTag;
     string enemyDiceTag;
 
+    public int count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,174 +25,73 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void EnemyNormalSwordFunction(GameObject p_dice, GameObject e_dice)
-    {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
+        for(int i = 0; i < 1; i++)
         {
-            if (ERD.selectObject[i].tag == "NormalSword")
+            if (count == 5)
             {
                 SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+                count = 0;
             }
-        }
+        }       
     }
 
-    public void EnemyNormalBowFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalSwordFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "NormalBow")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyNormalShieldFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalBowFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "NormalShield")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyNormalArmerFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalShieldFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "NormalArmer")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyNormalStealFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalArmerFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "NormalSteal")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyNormalCounterFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalStealFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "NormalCounter")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyAPSwordFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyNormalCounterFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "APSword")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+       count++;
     }
 
-    public void EnemyAPBowFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyAPSwordFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "APBow")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyAPShieldFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyAPBowFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "APShield")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+       count++;
     }
 
-    public void EnemyAPArmerFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyAPShieldFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "APArmer")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+       count++;
     }
 
-    public void EnemyAPStealFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyAPArmerFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (ERD.selectObject[i].tag == "APSteal")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+        count++;
     }
 
-    public void EnemyAPCounterFunction(GameObject p_dice, GameObject e_dice)
+    public void EnemyAPStealFunction()
     {
-        playerDiceTag = p_dice.tag;
-        enemyDiceTag = e_dice.tag;
+       count++;
+    }
 
-        for (int i = 0; i < 5; i++)
-        {            
-            if (ERD.selectObject[i].tag == "APCounter")
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-            }
-        }
+    public void EnemyAPCounterFunction()
+    {
+        count++;
     }   
 }

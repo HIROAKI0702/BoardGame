@@ -25,40 +25,40 @@ public class FunctionCallScript : MonoBehaviour
         switch (tag)
         {
             case "NormalShield":
-                PAPP.PlayerNormalShieldFunction(playerdice, enemydice);
+                PAPP.PlayerNormalShieldFunction();
                 break;
             case "NormalArmer":
-                PAPP.PlayerNormalArmerFunction(playerdice, enemydice);
+                PAPP.PlayerNormalArmerFunction();
                 break;
             case "NormalCounter":
-                PAPP.PlayerNormalCounterFunction(playerdice, enemydice);
+                PAPP.PlayerNormalCounterFunction();
                 break;
             case "APShield":
-                PAPP.PlayerAPShieldFunction(playerdice, enemydice);
+                PAPP.PlayerAPShieldFunction();
                 break;
             case "APArmer":
-                PAPP.PlayerAPArmerFunction(playerdice, enemydice);
+                PAPP.PlayerAPArmerFunction();
                 break;
             case "APCounter":
-                PAPP.PlayerAPCounterFunction(playerdice, enemydice);
+                PAPP.PlayerAPCounterFunction();
                 break;
             case "NormalSword":
-                PAPP.PlayerNormalSwordFunction(playerdice, enemydice);
+                PAPP.PlayerNormalSwordFunction();
                 break;
             case "NormalBow":
-                PAPP.PlayerNormalBowFunction(playerdice, enemydice);
+                PAPP.PlayerNormalBowFunction();
                 break;
             case "NormalSteal":
-                PAPP.PlayerNormalStealFunction(playerdice, enemydice);
+                PAPP.PlayerNormalStealFunction();
                 break;
             case "APSword":
-                PAPP.PlayerAPSwordFunction(playerdice, enemydice);
+                PAPP.PlayerAPSwordFunction();
                 break;
             case "APBow":
-                PAPP.PlayerAPBowFunction(playerdice, enemydice);
+                PAPP.PlayerAPBowFunction();
                 break;
             case "APSteal":
-                PAPP.PlayerAPStealFunction(playerdice, enemydice);
+                PAPP.PlayerAPStealFunction();
                 break;
         }
     }
@@ -68,40 +68,40 @@ public class FunctionCallScript : MonoBehaviour
         switch (tag)
         {
             case "NormalShield":
-                EAPP.EnemyNormalShieldFunction(playerdice, enemydice);
+                EAPP.EnemyNormalShieldFunction();
                 break;
             case "NormalArmer":
-                EAPP.EnemyNormalArmerFunction(playerdice, enemydice);
+                EAPP.EnemyNormalArmerFunction();
                 break;
             case "NormalCounter":
-                EAPP.EnemyNormalCounterFunction(playerdice, enemydice);
+                EAPP.EnemyNormalCounterFunction();
                 break;
             case "APShield":
-                EAPP.EnemyAPShieldFunction(playerdice, enemydice);
+                EAPP.EnemyAPShieldFunction();
                 break;
             case "APArmer":
-                EAPP.EnemyAPArmerFunction(playerdice, enemydice);
+                EAPP.EnemyAPArmerFunction();
                 break;
             case "APCounter":
-                EAPP.EnemyAPCounterFunction(playerdice, enemydice);
+                EAPP.EnemyAPCounterFunction();
                 break;
             case "NormalSword":
-                EAPP.EnemyNormalSwordFunction(playerdice, enemydice);
+                EAPP.EnemyNormalSwordFunction();
                 break;
             case "NormalBow":
-                EAPP.EnemyNormalBowFunction(playerdice, enemydice);
+                EAPP.EnemyNormalBowFunction();
                 break;
             case "NormalSteal":
-                EAPP.EnemyNormalStealFunction(playerdice, enemydice);
+                EAPP.EnemyNormalStealFunction();
                 break;
             case "APSword":
-                EAPP.EnemyAPSwordFunction(playerdice, enemydice);
+                EAPP.EnemyAPSwordFunction();
                 break;
             case "APBow":
-                EAPP.EnemyAPBowFunction(playerdice, enemydice);
+                EAPP.EnemyAPBowFunction();
                 break;
             case "APSteal":
-                EAPP.EnemyAPStealFunction(playerdice, enemydice);
+                EAPP.EnemyAPStealFunction();
                 break;
         }
     }

@@ -86,7 +86,8 @@ public class EnemyRandomDice : MonoBehaviour
 
                 //ランダムなプレハブを選択して生成
                 //GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-                GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+                //GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+                GameObject Dice = Instantiate(saikoroObject[1], newPosition, Quaternion.identity);
 
                 string tag = Dice.tag;
 
@@ -138,6 +139,7 @@ public class EnemyRandomDice : MonoBehaviour
         for (int i = 0; i < selectTag.Count; i++)
         {
             FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i],choicedice.selectObject[i]);
+            enemycallDiceFlag = false;
         }
     }
 
