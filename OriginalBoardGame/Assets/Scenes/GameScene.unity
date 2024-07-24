@@ -1005,7 +1005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6be931befd4d364ab5b56b5fe835216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
   choicedice: {fileID: 493391184}
@@ -2858,6 +2857,7 @@ MonoBehaviour:
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
   SC: {fileID: 519420036}
+  count: 0
 --- !u!114 &2132205799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,6 +2876,7 @@ MonoBehaviour:
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
   SC: {fileID: 519420036}
+  e_count: 0
 --- !u!114 &2132205800
 MonoBehaviour:
   m_ObjectHideFlags: 0

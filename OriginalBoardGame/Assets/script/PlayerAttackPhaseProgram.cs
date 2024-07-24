@@ -26,73 +26,102 @@ public class PlayerAttackPhaseProgram : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 1; i++)
+        
+    }
+
+    public void PlayerNormalSwordFunction(GameObject p_dice, GameObject e_dice)
+    {
+        for (int i = 0; i < 1; i++)
         {
-            if (count == 5)
-            {
-                SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
-                count = 0;
-            }
-        }        
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerNormalSwordFunction()
-    {      
-         count++;
-    }
-
-    public void PlayerNormalBowFunction()
-    {       
-        count++;       
-    }
-
-    public void PlayerNormalShieldFunction()
+    public void PlayerNormalBowFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerNormalArmerFunction()
+    public void PlayerNormalShieldFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerNormalStealFunction()
-    {      
-        count++;
-    }
-
-    public void PlayerNormalCounterFunction()
+    public void PlayerNormalArmerFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerAPSwordFunction()
+    public void PlayerNormalStealFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;                
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerAPBowFunction()
+    public void PlayerNormalCounterFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerAPShieldFunction()
+    public void PlayerAPSwordFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(p_dice, e_dice);
+        }
     }
 
-    public void PlayerAPArmerFunction()
+    public void PlayerAPBowFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 
-    public void PlayerAPStealFunction()
-    {    
-        count++;
-    }
-
-    public void PlayerAPCounterFunction()
+    public void PlayerAPShieldFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
+    }
+
+    public void PlayerAPArmerFunction(GameObject p_dice, GameObject e_dice)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
+    }
+
+    public void PlayerAPStealFunction(GameObject p_dice, GameObject e_dice)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
+    }
+
+    public void PlayerAPCounterFunction(GameObject p_dice, GameObject e_dice)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            SC.PlayerStatusChangeFunction(choicedice.selectObject[i], ERD.selectObject[i]);
+        }
     }
 }

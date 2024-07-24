@@ -14,7 +14,7 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
     string playerDiceTag;
     string enemyDiceTag;
 
-    public int count;
+    public int e_count;
 
     // Start is called before the first frame update
     void Start()
@@ -25,73 +25,102 @@ public class EnemyAttackPhaseProgram : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 1; i++)
+           
+    }
+
+    public void EnemyNormalSwordFunction(GameObject p_dice, GameObject e_dice)
+    {
+        for (int i = 0; i < 1; i++)
         {
-            if (count == 5)
-            {
-                SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
-                count = 0;
-            }
-        }       
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalSwordFunction()
+    public void EnemyNormalBowFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalBowFunction()
+    public void EnemyNormalShieldFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalShieldFunction()
+    public void EnemyNormalArmerFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalArmerFunction()
+    public void EnemyNormalStealFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalStealFunction()
+    public void EnemyNormalCounterFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyNormalCounterFunction()
+    public void EnemyAPSwordFunction(GameObject p_dice, GameObject e_dice)
     {
-       count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyAPSwordFunction()
+    public void EnemyAPBowFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyAPBowFunction()
+    public void EnemyAPShieldFunction(GameObject p_dice, GameObject e_dice)
     {
-       count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyAPShieldFunction()
+    public void EnemyAPArmerFunction(GameObject p_dice, GameObject e_dice)
     {
-       count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyAPArmerFunction()
+    public void EnemyAPStealFunction(GameObject p_dice, GameObject e_dice)
     {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }
 
-    public void EnemyAPStealFunction()
+    public void EnemyAPCounterFunction(GameObject p_dice, GameObject e_dice)
     {
-       count++;
-    }
-
-    public void EnemyAPCounterFunction()
-    {
-        count++;
+        for (int i = 0; i < 1; i++)
+        {
+            SC.EnemyStatusChangeFunction(ERD.selectObject[i], choicedice.selectObject[i]);
+        }
     }   
 }
