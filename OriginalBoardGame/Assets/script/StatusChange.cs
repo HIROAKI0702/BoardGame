@@ -8,6 +8,8 @@ public class StatusChange : MonoBehaviour
     public EnemyStatusProgram ESP;
     public ChoiceDice choicedice;
     public EnemyRandomDice ERD;
+    public PlayerAttackPhaseProgram PAPP;
+    public EnemyAttackPhaseProgram EAPP;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class StatusChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PlayerStatusChangeFunction(GameObject playerDice, GameObject enemyDice)
@@ -50,11 +52,9 @@ public class StatusChange : MonoBehaviour
             Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
 
-        Debug.Log(ESP.e_AitemPoint);
-        //自分のダイスが盗みダイスの時かつ敵のアイテムポイントが１以上の場合
+        //自分のダイスが盗みダイスの時かつ敵のアイテムポイントが１以上の場合自分のアイテムポイントを＋２敵のアイテムポイントをー１
         if (playerDiceTag == "NormalSteal" && ESP.e_AitemPoint > 0)
         {
-            Debug.Log(playerDiceTag);
             ESP.e_AitemPoint--;
             PSP.p_AitemPoint++;
             Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
@@ -81,6 +81,7 @@ public class StatusChange : MonoBehaviour
             Debug.Log("敵の攻撃を無効化した、残りHP" + PSP.p_Hp);
         }
 
+        //自分のダイスが剣ダイスの時かつ敵のダイスが鎧ダイスでない場合ダメージを入れてアイテムポイント＋１
         if (playerDiceTag == "APSword")
         {
             PSP.p_AitemPoint++;
@@ -97,6 +98,7 @@ public class StatusChange : MonoBehaviour
             Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
 
+        //自分のダイスが弓ダイスの時かつ敵のダイスが盾ダイスでない場合ダメージを入れてアイテムポイント＋１
         if (playerDiceTag == "APBow")
         {
             PSP.p_AitemPoint++;
@@ -113,6 +115,7 @@ public class StatusChange : MonoBehaviour
             Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
 
+        //自分のダイスが盗みダイスの時かつ敵のアイテムポイントが１以上の場合自分のアイテムポイントを＋２敵のアイテムポイントをー１
         if (playerDiceTag == "APSteal" && ESP.e_AitemPoint > 0)
         {
             ESP.e_AitemPoint--;
@@ -120,6 +123,7 @@ public class StatusChange : MonoBehaviour
             Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
         }
 
+        //自分のダイスがカウンターダイスかつ敵のダイスが弓または剣のダイスの場合カウンターダメージを入れてアイテムポイント＋１
         if (playerDiceTag == "APCounter")
         {
             PSP.p_AitemPoint++;
@@ -133,6 +137,7 @@ public class StatusChange : MonoBehaviour
             }          
         }
 
+        //自分のダイスが鎧ダイスかつ敵のダイスが剣の場合何もせず無効化してアイテムポイント＋１
         if (playerDiceTag == "APArmer")
         {
             PSP.p_AitemPoint++;
@@ -144,6 +149,7 @@ public class StatusChange : MonoBehaviour
             
         }
 
+        //自分のダイスが鎧ダイスかつ敵のダイスが剣の場合何もせず無効化してアイテムポイント＋１
         if (playerDiceTag == "APShield")
         {
             PSP.p_AitemPoint++;
@@ -246,7 +252,7 @@ public class StatusChange : MonoBehaviour
         {
             PSP.p_AitemPoint--;
             ESP.e_AitemPoint += 2;
-            Debug.Log("敵のアイテムポイントを2盗んだ、敵のアイテムポイントは" + ESP.e_AitemPoint);
+            Debug.Log("敵のアイテムポイントを2盗んだ、敵のアイテムポイントは" + PSP.p_AitemPoint);
         }
 
         if (enemyDiceTag == "APCounter")

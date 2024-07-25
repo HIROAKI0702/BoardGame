@@ -1009,6 +1009,8 @@ MonoBehaviour:
   ESP: {fileID: 287240014}
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
+  PAPP: {fileID: 2132205798}
+  EAPP: {fileID: 2132205799}
 --- !u!1 &591035366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,13 +2853,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64222cbb7583c6f4da68d9397d2acf5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
   SC: {fileID: 519420036}
-  count: 0
+  EAPP: {fileID: 2132205799}
+  FCS: {fileID: 2132205800}
+  p_count: 0
 --- !u!114 &2132205799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2870,12 +2873,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3566fedd02fbaf49a56f3675279947b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
   SC: {fileID: 519420036}
+  PAPP: {fileID: 2132205798}
+  FCS: {fileID: 2132205800}
   e_count: 0
 --- !u!114 &2132205800
 MonoBehaviour:
@@ -2893,6 +2897,8 @@ MonoBehaviour:
   PAPP: {fileID: 2132205798}
   choicedice: {fileID: 493391184}
   ERD: {fileID: 1979970548}
+  SC: {fileID: 519420036}
+  statusFlag: 0
 --- !u!1 &2140241806
 GameObject:
   m_ObjectHideFlags: 0

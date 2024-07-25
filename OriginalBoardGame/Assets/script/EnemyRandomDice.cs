@@ -86,8 +86,8 @@ public class EnemyRandomDice : MonoBehaviour
 
                 //ランダムなプレハブを選択して生成
                 //GameObject prefabSpawn = saikoroObject[Random.Range(0, saikoroObject.Count)];
-                //GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
-                GameObject Dice = Instantiate(saikoroObject[7], newPosition, Quaternion.identity);
+                GameObject Dice = Instantiate(saikoroObject[GetRandomDice()], newPosition, Quaternion.identity);
+                //GameObject Dice = Instantiate(saikoroObject[0], newPosition, Quaternion.identity);
 
                 string tag = Dice.tag;
 
