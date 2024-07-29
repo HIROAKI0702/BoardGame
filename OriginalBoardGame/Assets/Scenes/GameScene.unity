@@ -1243,6 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prd: {fileID: 1979970547}
+  choicedice: {fileID: 493391184}
 --- !u!1 &911443143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prd: {fileID: 0}
+  choicedice: {fileID: 0}
 --- !u!1 &1067602579
 GameObject:
   m_ObjectHideFlags: 0
