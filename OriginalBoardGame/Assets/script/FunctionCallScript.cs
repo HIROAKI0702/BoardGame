@@ -27,7 +27,7 @@ public class FunctionCallScript : MonoBehaviour
     {
         if (tag.StartsWith("Normal") || tag.StartsWith("AP"))
         {
-            statusFlag = true;
+            SC.PlayerStatusChangeFunction(playerdice, enemydice);
         }
 
             //switch (tag)
@@ -75,7 +75,7 @@ public class FunctionCallScript : MonoBehaviour
     {
         if (tag.StartsWith("Normal") || tag.StartsWith("AP"))
         {
-            statusFlag = true;
+            SC.EnemyStatusChangeFunction(playerdice, enemydice);
         }
 
         //switch (tag)

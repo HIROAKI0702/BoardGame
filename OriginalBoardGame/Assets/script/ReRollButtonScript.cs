@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ReRollButtonScript : MonoBehaviour
 {
     public PlayerRandomDice prd;
+    public ChoiceDice choicedice;
     Button btn;
 
     // Start is called before the first frame update
@@ -35,6 +36,11 @@ public class ReRollButtonScript : MonoBehaviour
             prd.SpawnObjects();
         }
         else
+        {
+            btn.interactable = false;
+        }
+
+        if(choicedice.count == 5)
         {
             btn.interactable = false;
         }

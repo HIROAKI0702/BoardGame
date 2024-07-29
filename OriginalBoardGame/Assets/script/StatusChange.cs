@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,11 +35,6 @@ public class StatusChange : MonoBehaviour
             ESP.e_Hp -= PSP.p_SwordAttack;
             Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
-        else if(playerDiceTag == "NormalSword" && (enemyDiceTag == "NormalArmer" && enemyDiceTag == "APArmer"))
-        {
-            PSP.p_SwordAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
-        }
 
         //自分のダイスが弓ダイスの時かつ敵のダイスが盾ダイスでない場合ダメージを入れる
         if (playerDiceTag == "NormalBow" && (enemyDiceTag != "NormalShield" && enemyDiceTag != "APShield"))
@@ -46,24 +42,11 @@ public class StatusChange : MonoBehaviour
             ESP.e_Hp -= PSP.p_BowAttack;
             Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
         }
-        else if(playerDiceTag == "NormalBow" && (enemyDiceTag == "NormalShield" && enemyDiceTag == "APShield"))
-        {
-            PSP.p_BowAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
-        }
-
-        //自分のダイスが盗みダイスの時かつ敵のアイテムポイントが１以上の場合自分のアイテムポイントを＋２敵のアイテムポイントをー１
-        if (playerDiceTag == "NormalSteal" && ESP.e_AitemPoint > 0)
-        {
-            ESP.e_AitemPoint--;
-            PSP.p_AitemPoint++;
-            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
-        }
-
+        
         //自分のダイスがカウンターダイスかつ敵のダイスが弓または剣のダイスの場合カウンターダメージを入れる
-        if (playerDiceTag == "NormalCounter" &&
-            (enemyDiceTag == "NormalSword" && enemyDiceTag == "APSword") &&
-            (enemyDiceTag == "NormalBow" && enemyDiceTag == "APBow"))
+        if (playerDiceTag == "NormalCounter" && 
+           (enemyDiceTag == "NormalSword" || enemyDiceTag == "APSword" || 
+            enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
         {
             ESP.e_Hp -= PSP.p_CounterAttack;
             Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
@@ -92,12 +75,7 @@ public class StatusChange : MonoBehaviour
                 Debug.Log("敵に攻撃をして" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
             }            
         }
-        else if(playerDiceTag == "APSword" && (enemyDiceTag == "NormalArmer" && enemyDiceTag == "APArmer"))
-        {
-            PSP.p_SwordAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
-        }
-
+        
         //自分のダイスが弓ダイスの時かつ敵のダイスが盾ダイスでない場合ダメージを入れてアイテムポイント＋１
         if (playerDiceTag == "APBow")
         {
@@ -109,28 +87,15 @@ public class StatusChange : MonoBehaviour
                 Debug.Log("敵に攻撃をして" + PSP.p_BowAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
             }          
         }
-        else if(playerDiceTag == "APBow" && (enemyDiceTag == "NormalShield" && enemyDiceTag == "APShield"))
-        {
-            PSP.p_SwordAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
-        }
-
-        //自分のダイスが盗みダイスの時かつ敵のアイテムポイントが１以上の場合自分のアイテムポイントを＋２敵のアイテムポイントをー１
-        if (playerDiceTag == "APSteal" && ESP.e_AitemPoint > 0)
-        {
-            ESP.e_AitemPoint--;
-            PSP.p_AitemPoint += 2;
-            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
-        }
-
+        
         //自分のダイスがカウンターダイスかつ敵のダイスが弓または剣のダイスの場合カウンターダメージを入れてアイテムポイント＋１
         if (playerDiceTag == "APCounter")
         {
             PSP.p_AitemPoint++;
 
             if (playerDiceTag == "APCounter" && 
-                (enemyDiceTag == "NormalSword" && enemyDiceTag == "APSword") &&
-                (enemyDiceTag == "NormalBow" && enemyDiceTag == "APBow"))
+               (enemyDiceTag == "NormalSword" || enemyDiceTag == "APSword" ||
+                enemyDiceTag == "NormalBow" || enemyDiceTag == "APBow"))
             {
                 ESP.e_Hp -= PSP.p_CounterAttack;
                 Debug.Log("敵の攻撃に反撃して" + PSP.p_CounterAttack + "ダメージ入った、敵の残りHP" + ":" + ESP.e_Hp);
@@ -174,33 +139,29 @@ public class StatusChange : MonoBehaviour
             PSP.p_Hp -= ESP.e_SwordAttack;
             Debug.Log("敵に攻撃をして" + ESP.e_SwordAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
         }
-        else if(enemyDiceTag == "NormalSword" && (playerDiceTag == "NormalArmer" && playerDiceTag == "APArmer"))
-        {
-            PSP.p_SwordAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + ESP.e_Hp);
-        }
-
+        
         if (enemyDiceTag == "NormalBow" && (playerDiceTag != "NormalShield" && playerDiceTag != "APShield"))
         {
             PSP.p_Hp -= ESP.e_BowAttack;
             Debug.Log("敵に攻撃をして" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
         }
-        else if(enemyDiceTag == "NormalBow" && (playerDiceTag == "NormalShield" && playerDiceTag == "APShield"))
-        {
-            PSP.p_BowAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + ESP.e_Hp);
-        }
-
+        
         if (enemyDiceTag == "NormalSteal" && PSP.p_AitemPoint > 0)
         {
             PSP.p_AitemPoint--;
             ESP.e_AitemPoint++;
             Debug.Log("敵のアイテムポイントを1盗んだ、敵のアイテムポイントは" + ESP.e_AitemPoint);
         }
+        if (playerDiceTag == "NormalSteal" && ESP.e_AitemPoint > -1)
+        {
+            ESP.e_AitemPoint--;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
+        }
 
         if (enemyDiceTag == "NormalCounter" &&
-            (playerDiceTag == "NormalSword" && playerDiceTag == "APSword" &&
-            playerDiceTag == "NormalBow" && playerDiceTag == "APBow"))
+           (playerDiceTag == "NormalSword" || playerDiceTag == "APSword" ||
+            playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
         {
             PSP.p_Hp -= ESP.e_CounterAttack;
             Debug.Log("敵の攻撃に反撃して" + ESP.e_CounterAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
@@ -226,12 +187,7 @@ public class StatusChange : MonoBehaviour
                 Debug.Log("敵に攻撃をして" + ESP.e_SwordAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
             }           
         }
-        else if(enemyDiceTag == "APSword" && (playerDiceTag == "NormalArmer" && playerDiceTag == "APArmer"))
-        {
-            PSP.p_SwordAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + PSP.p_SwordAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + ESP.e_Hp);
-        }
-
+        
         if (enemyDiceTag == "APBow")
         {
             ESP.e_AitemPoint++;
@@ -242,17 +198,20 @@ public class StatusChange : MonoBehaviour
                 Debug.Log("敵に攻撃をして" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
             }
         }
-        else if(enemyDiceTag == "APBow" && (playerDiceTag == "NormalShield" && playerDiceTag == "APShield"))
-        {
-            PSP.p_BowAttack = 0;
-            Debug.Log("敵に攻撃をしたが無効化され" + ESP.e_BowAttack + "ダメージ入った、プレイヤーの残りHP" + ":" + ESP.e_Hp);
-        }
-
+        
         if (enemyDiceTag == "APSteal" && PSP.p_AitemPoint > 0)
         {
+            ESP.e_AitemPoint++;
             PSP.p_AitemPoint--;
-            ESP.e_AitemPoint += 2;
+            ESP.e_AitemPoint++;
             Debug.Log("敵のアイテムポイントを2盗んだ、敵のアイテムポイントは" + PSP.p_AitemPoint);
+        }
+        if (playerDiceTag == "APSteal" && ESP.e_AitemPoint > -1)
+        {
+            PSP.p_AitemPoint++;
+            ESP.e_AitemPoint--;
+            PSP.p_AitemPoint++;
+            Debug.Log("敵のアイテムポイントを1盗んだ、自分のアイテムポイントは" + PSP.p_AitemPoint);
         }
 
         if (enemyDiceTag == "APCounter")
@@ -260,8 +219,8 @@ public class StatusChange : MonoBehaviour
             ESP.e_AitemPoint++;
 
             if (enemyDiceTag == "APCounter" && 
-                (playerDiceTag == "NormalSword" && playerDiceTag == "APSword") && 
-                (playerDiceTag == "NormalBow" && playerDiceTag == "APBow"))
+               (playerDiceTag == "NormalSword" || playerDiceTag == "APSword" ||
+                playerDiceTag == "NormalBow" || playerDiceTag == "APBow"))
             {
                 PSP.p_Hp -= ESP.e_CounterAttack;
                 Debug.Log("敵の攻撃に反撃して" + ESP.e_CounterAttack + "ダメージ入った、プレイヤーの残りHP:" + PSP.p_Hp);
