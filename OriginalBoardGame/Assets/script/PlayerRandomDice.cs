@@ -115,7 +115,6 @@ public class PlayerRandomDice : MonoBehaviour
         }
 
         return weight[Random.Range(0, weight.Length)];
-
     }
 }
 

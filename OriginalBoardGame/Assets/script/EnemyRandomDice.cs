@@ -139,7 +139,6 @@ public class EnemyRandomDice : MonoBehaviour
         for (int i = 0; i < selectTag.Count; i++)
         {
             FCS.EnemyDiceCallFunction(selectTag[i], selectObject[i], choicedice.selectObject[i]);
-            enemycallDiceFlag = false;
         }
     }
 
@@ -194,7 +193,6 @@ public class EnemyRandomDice : MonoBehaviour
                 LastTimeDice[i].transform.position = targetPosition;
             }
         }
-        gamemanager.MyTurnFlag = true;
         playercallDiceFlag = true;
         enemycallDiceFlag = true;
     }

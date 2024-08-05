@@ -976,9 +976,9 @@ MonoBehaviour:
   playerrandomdice: {fileID: 1979970547}
   enemyrandomdice: {fileID: 1979970548}
   choicedice: {fileID: 493391184}
-  enemychoicedice: {fileID: 0}
   pos: {x: -6, y: 0.3, z: 0}
-  currentState: 2
+  btn: {fileID: 1979970544}
+  currentState: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6be931befd4d364ab5b56b5fe835216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanager: {fileID: 519420034}
   PSP: {fileID: 19308486}
   ESP: {fileID: 287240014}
   choicedice: {fileID: 493391184}
@@ -2850,7 +2851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132205795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64222cbb7583c6f4da68d9397d2acf5e, type: 3}
   m_Name: 
@@ -2870,7 +2871,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132205795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3566fedd02fbaf49a56f3675279947b, type: 3}
   m_Name: 

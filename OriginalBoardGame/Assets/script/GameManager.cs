@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     public string scenenameO;
 
     //自分のターンか敵のターンかを判断
-    public bool MyTurnFlag = true;
+    public bool MyTurnFlag = false;
     public bool ReturnPushFlag = false;
     public bool playerAttackTurnFlag = false;
     public bool enemyAttackTurnFlag = false;
@@ -19,9 +20,10 @@ public class GameManager : MonoBehaviour
     public PlayerRandomDice playerrandomdice;
     public EnemyRandomDice enemyrandomdice;
     public ChoiceDice choicedice;
-    public EnemyChoiceDice enemychoicedice;
 
     public Vector3 pos = new Vector3(-6f, 0.3f, 0.0f);
+
+    public Button btn;
 
     public enum GameState
     {
@@ -40,7 +42,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MyTurnFlag = true;
+        btn = GetComponent<Button>();
     }
 
     // Update is called once per frame
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     void GameTitle()
     {
-        Debug.Log("title");
+        Debug.Log("title");        
     }
 
     void GameHome()
@@ -107,11 +110,11 @@ public class GameManager : MonoBehaviour
         gState = "playng";
         Debug.Log("playng");
 
-        if(MyTurnFlag)
+        if (MyTurnFlag && !btn.interactable)
         {
-            playerrandomdice.SpawnObjects();
+            btn.interactable = true;
             Debug.Log(MyTurnFlag);
-        }      
+        }
     }
 
     void GamePose()

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StatusChange : MonoBehaviour
 {
+    public GameManager gamemanager;
     public PlayerStatusProgram PSP;
     public EnemyStatusProgram ESP;
     public ChoiceDice choicedice;
@@ -249,5 +250,15 @@ public class StatusChange : MonoBehaviour
 
         PSP.p_Hp = Mathf.Max(0, PSP.p_Hp);
         ESP.e_Hp = Mathf.Max(0, ESP.e_Hp);
+
+        StartCoroutine(AttckTurnEnd());
+    }
+
+    IEnumerator AttckTurnEnd()
+    {
+        yield return new WaitForSeconds(2f);
+
+        gamemanager.MyTurnFlag = true;
+        Debug.Log(gamemanager.MyTurnFlag);
     }
 }
